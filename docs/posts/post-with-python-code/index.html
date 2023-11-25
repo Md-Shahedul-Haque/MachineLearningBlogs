@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="MD S H">
-<meta name="dcterms.date" content="2023-11-22">
+<meta name="author" content="Md Shahedul Haque">
+<meta name="dcterms.date" content="2023-10-22">
 
-<title>MachineLearningBlogs - Post With Python Code</title>
+<title>MachineLearningBlogs - Random Variable</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,6 +96,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -142,11 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
+      <h1 class="title">Random Variable</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
+                <div class="quarto-category">random variable</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
+                <div class="quarto-category">visualization</div>
               </div>
                   </div>
   </div>
@@ -157,14 +160,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>MD S H </p>
+               <p>Md Shahedul Haque </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 22, 2023</p>
+        <p class="date">October 22, 2023</p>
       </div>
     </div>
     
@@ -182,16 +185,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This is a post with executable code with python.</p>
+<section id="random-variable-in-machine-learning" class="level1">
+<h1>Random Variable in Machine Learning</h1>
+<p>A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually <span class="math inline">\(X\)</span> ) where small letter (<span class="math inline">\(x\)</span>) denotes the observed value. For example, <span class="math inline">\(X\)</span> be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space <span class="math inline">\(S\)</span> is:</p>
+<p><span class="math display">\[ S = {(H, H), (H, T), (T, H), (T, T) } \]</span></p>
+<p>This 4 possible outcomes of this experiment constitute the domain of $X$. For each outcome, the random variable is calculates in this way:</p>
+<p><span class="math display">\[  X(H, H) = 2  \]</span>$$ X(H, T) = 1 $$</p>
+<p><span class="math display">\[  X(T, H) = 1 \]</span> $$ X(T, T) = 0 $$</p>
+<section id="types-of-random-variable" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-random-variable">Types of Random Variable</h2>
+<p>In broader way, there are two categories of random variable:</p>
+<ol type="1">
+<li><p>Discrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing <span class="math inline">\(X\)</span> is a discrete random variable with observable values <span class="math inline">\(\{0, 1, 2\}\)</span> .</p></li>
+<li><p>Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.</p></li>
+</ol>
+<section id="density-functions" class="level3">
+<h3 class="anchored" data-anchor-id="density-functions">Density Functions</h3>
+</section>
+<section id="probability-mass-function-pmf" class="level3">
+<h3 class="anchored" data-anchor-id="probability-mass-function-pmf"><strong>Probability Mass Function</strong> <strong>(PMF)</strong></h3>
+<p>The probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,<br>
+<span class="math display">\[  f(x) = P(X = x) \]</span></p>
+<p>which follows the following properties:</p>
+<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
+$S$ } \]</span><br>
+</p>
+<p><span class="math display">\[  \sum_{x \epsilon S} f(x) = 1  \]</span></p>
+</section>
+<section id="probability-density-function-pdf" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-function-pdf"><strong>Probability Density Function</strong> <strong>(PDF)</strong></h3>
+<p>The probability density function (PDF) a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,<br>
+<span class="math display">\[ \int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \mbox{ for any $a, b$ \(\epsilon\) $S$ satisfying a &lt; b }\]</span></p>
+<p>which follows the following properties:</p>
+<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
+$S$ } \]</span></p>
+<p><span class="math display">\[  \int_{x \epsilon S} f(x)dx = 1  \]</span></p>
+</section>
+<section id="cumulative-distribution-function-cdf" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><strong>Cumulative Distribution Function</strong> <strong>(CDF)</strong></h3>
+<p>The cumulative distribution function (PDF) a random variable is the likelihood that the variable is bounded within a given value. Mathematically,</p>
+<p><span class="math display">\[ F(x) = \sum_{z \epsilon S, z \leq x } f(z) \mbox{ for discrete random variables }\]</span><br>
+<span class="math display">\[ F(x) = \int_{- \infty}^{x} f(z)dz  \mbox{ for continuous random variables }\]</span></p>
+<p>Furthermore,</p>
+<p><span class="math display">\[  P(a&lt; X \leq b) = F(b) - F(a)  \]</span></p>
+</section>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>8</code></pre>
 </div>
 </div>
-<p>Is it working ?</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

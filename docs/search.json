@@ -9,9 +9,9 @@
   {
     "objectID": "posts/post-with-python-code/index.html",
     "href": "posts/post-with-python-code/index.html",
-    "title": "Post With Code",
+    "title": "Random Variable",
     "section": "",
-    "text": "This is a post with executable code with python.\n\n1 + 1\n\n2\n\n\nIs it working ?"
+    "text": "A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually \\(X\\) ) where small letter (\\(x\\)) denotes the observed value. For example, \\(X\\) be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space \\(S\\) is:\n\\[ S = {(H, H), (H, T), (T, H), (T, T) } \\]\nThis 4 possible outcomes of this experiment constitute the domain of $X$. For each outcome, the random variable is calculates in this way:\n\\[  X(H, H) = 2  \\]$$ X(H, T) = 1 $$\n\\[  X(T, H) = 1 \\] $$ X(T, T) = 0 $$\n\n\nIn broader way, there are two categories of random variable:\n\nDiscrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing \\(X\\) is a discrete random variable with observable values \\(\\{0, 1, 2\\}\\) .\nContinuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.\n\n\n\n\n\n\nThe probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,\n\\[  f(x) = P(X = x) \\]\nwhich follows the following properties:\n\\[  f(x) \\geq 0 \\mbox{ for any $x$ \\(\\epsilon\\)\n$S$ } \\]\n\n\\[  \\sum_{x \\epsilon S} f(x) = 1  \\]\n\n\n\nThe probability density function (PDF) a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,\n\\[ \\int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \\mbox{ for any $a, b$ \\(\\epsilon\\) $S$ satisfying a &lt; b }\\]\nwhich follows the following properties:\n\\[  f(x) \\geq 0 \\mbox{ for any $x$ \\(\\epsilon\\)\n$S$ } \\]\n\\[  \\int_{x \\epsilon S} f(x)dx = 1  \\]\n\n\n\nThe cumulative distribution function (PDF) a random variable is the likelihood that the variable is bounded within a given value. Mathematically,\n\\[ F(x) = \\sum_{z \\epsilon S, z \\leq x } f(z) \\mbox{ for discrete random variables }\\]\n\\[ F(x) = \\int_{- \\infty}^{x} f(z)dz  \\mbox{ for continuous random variables }\\]\nFurthermore,\n\\[  P(a&lt; X \\leq b) = F(b) - F(a)  \\]\n\n\n\n\n\npow(2, 3)\n\n8"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -25,13 +25,27 @@
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "This is my first post in a Quarto blog. Welcome!"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "MachineLearningBlogs",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2023\n\n\nMD S H\n\n\n\n\n\n\n  \n\n\n\n\nPost With Python Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2023\n\n\nMD S H\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2023\n\n\nMD S H\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome To My Blog\n\n\n\n\n\n\n\nStart\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nMD S H\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2023\n\n\nMD S H\n\n\n\n\n\n\n  \n\n\n\n\nRandom Variable\n\n\n\n\n\n\n\nrandom variable\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\n\n\n\n\n\n\n\n\n\nOct 22, 2023\n\n\nMd Shahedul Haque\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post-with-python-code/index.html#types-of-random-variable",
+    "href": "posts/post-with-python-code/index.html#types-of-random-variable",
+    "title": "Random Variable",
+    "section": "",
+    "text": "In broader way, there are two categories of random variable:\n\nDiscrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing \\(X\\) is a discrete random variable with observable values \\(\\{0, 1, 2\\}\\) .\nContinuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.\n\n\n\n\n\n\nThe probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,\n\\[  f(x) = P(X = x) \\]\nwhich follows the following properties:\n\\[  f(x) \\geq 0 \\mbox{ for any $x$ \\(\\epsilon\\)\n$S$ } \\]\n\n\\[  \\sum_{x \\epsilon S} f(x) = 1  \\]\n\n\n\nThe probability density function (PDF) a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,\n\\[ \\int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \\mbox{ for any $a, b$ \\(\\epsilon\\) $S$ satisfying a &lt; b }\\]\nwhich follows the following properties:\n\\[  f(x) \\geq 0 \\mbox{ for any $x$ \\(\\epsilon\\)\n$S$ } \\]\n\\[  \\int_{x \\epsilon S} f(x)dx = 1  \\]\n\n\n\nThe cumulative distribution function (PDF) a random variable is the likelihood that the variable is bounded within a given value. Mathematically,\n\\[ F(x) = \\sum_{z \\epsilon S, z \\leq x } f(z) \\mbox{ for discrete random variables }\\]\n\\[ F(x) = \\int_{- \\infty}^{x} f(z)dz  \\mbox{ for continuous random variables }\\]\nFurthermore,\n\\[  P(a&lt; X \\leq b) = F(b) - F(a)  \\]"
+  },
+  {
+    "objectID": "posts/post-with-python-code/index.html#visualization",
+    "href": "posts/post-with-python-code/index.html#visualization",
+    "title": "Random Variable",
+    "section": "",
+    "text": "pow(2, 3)\n\n8"
   }
 ]
