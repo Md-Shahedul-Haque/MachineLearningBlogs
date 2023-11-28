@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Md Shahedul Haque">
-<meta name="dcterms.date" content="2023-10-22">
+<meta name="dcterms.date" content="2023-11-23">
 
 <title>MachineLearningBlogs - Random Variable</title>
 <style>
@@ -95,6 +95,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -102,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -167,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 22, 2023</p>
+        <p class="date">November 23, 2023</p>
       </div>
     </div>
     
@@ -178,7 +181,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/18ZDH7hSoHgnN0tJNrqULA9bgRhQ7q5AX"><i class="bi bi-journal-code"></i>Random Variable with Penguin Dataset Plots</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -232,14 +237,108 @@ $S$ } \]</span></p>
 </section>
 <section id="visualization" class="level2">
 <h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>For separating the actual environment in my local machine, I created a virtual environment and utilized the req.txt file to install the necessary library and packages.<br>
+</p>
+<section id="example-of-jupyter-embedding" class="level4">
+<h4 class="anchored" data-anchor-id="example-of-jupyter-embedding">Example of Jupyter Embedding:</h4>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> <span class="op">+</span> <span class="dv">6</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>11</code></pre>
+</div>
+</div>
+<ul>
+<li>Some embed:</li>
+</ul>
+<div class="quarto-embed-nb-cell">
+<div class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="fig-bill_ratio" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-bill_ratio-output-1.png" class="img-fluid figure-img" alt="A density plot of bill ratio by species."></p>
+<figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/18ZDH7hSoHgnN0tJNrqULA9bgRhQ7q5AX">Source: Random Variable with Penguin Dataset Plots</a></div>
+<p>You may include the code from a cell along with the output by using the <code>echo=true</code> option. For example, to include the code and the plot from the cell labelled <code>species-counts</code> the embed would be:</p>
+<div class="quarto-embed-nb-cell">
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins.groupby(<span class="st">"species"</span>).size().reset_index(name <span class="op">=</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="species-counts" class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Adelie</td>
+<td>152</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Chinstrap</td>
+<td>68</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Gentoo</td>
+<td>124</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/18ZDH7hSoHgnN0tJNrqULA9bgRhQ7q5AX">Source: Random Variable with Penguin Dataset Plots</a></div>
+<p>Showing some graph:</p>
+<div class="quarto-embed-nb-cell">
+<div id="fig-bill-marginal" class="cell quarto-layout-panel" data-execution_count="14">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-bill-marginal-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-bill-marginal-output-1.png" class="img-fluid figure-img" alt="Density plot of bill depth by species." data-ref-parent="fig-bill-marginal"></p>
+<figcaption class="figure-caption">(a) Gentoo penguins tend to have thinner bills,</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-bill-marginal-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-bill-marginal-output-2.png" class="img-fluid figure-img" alt="Density plot of bill length by species." data-ref-parent="fig-bill-marginal"></p>
+<figcaption class="figure-caption">(b) and Adelie penguins tend to have shorter bills.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Marginal distributions of bill dimensions</figcaption><p></p>
+</figure>
+</div>
+<a class="quarto-notebook-link" id="nblink-3" href="https://colab.research.google.com/drive/18ZDH7hSoHgnN0tJNrqULA9bgRhQ7q5AX#fig-bill-marginal">Source: Random Variable with Penguin Dataset Plots</a></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>8</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 </section>
 

@@ -1,12 +1,12 @@
 ---
-title: "Random Variable"
+title: "Dummy"
 author: "Md Shahedul Haque"
 date: "2023-10-22"
 categories: [random variable, code, analysis, visualization]
 image: "rv.png"
 ---
 
-# Random Variable in Machine Learning
+# RV in Machine Learning
 
 A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually $X$ ) where small letter ($x$) denotes the observed value. For example, $X$ be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space $S$ is:
 
@@ -18,7 +18,7 @@ $$  X(H, H) = 2  $$\$\$ X(H, T) = 1 \$\$
 
 $$  X(T, H) = 1 $$ \$\$ X(T, T) = 0 \$\$
 
-## Types of Random Variable 
+## Types of Random Variable
 
 In broader way, there are two categories of random variable:
 
@@ -65,6 +65,14 @@ $$  P(a< X \leq b) = F(b) - F(a)  $$
 
 ## Visualization
 
-```{python}
-pow(2, 3)
-```
+For separating the actual environment in my local machine, I created a virtual environment and utilized the req.txt file to install the necessary library and packages.
+
+#### Example of Jupyter Embedding:
+
+#### Some embed:
+
+{{< embed penguins.ipynb#fig-bill_ratio >}}
+
+You may include the code from a cell along with the output by using the `echo=true` option. For example, to include the code and the plot from the cell labelled `species-counts` the embed would be:
+
+{{< embed penguins.ipynb#species-counts echo=true >}}

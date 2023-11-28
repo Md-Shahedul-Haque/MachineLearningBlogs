@@ -1,0 +1,94 @@
+---
+title: "Random Variable"
+author: "Md Shahedul Haque"
+date: "2023-11-23"
+categories: [random variable, code, analysis, visualization]
+image: "rv.png"
+notebook-view:
+  - notebook: penguins.ipynb
+    title: "Random Variable with Penguin Dataset Plots"
+    url: https://colab.research.google.com/drive/18ZDH7hSoHgnN0tJNrqULA9bgRhQ7q5AX
+---
+
+# Random Variable in Machine Learning
+
+A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually $X$ ) where small letter ($x$) denotes the observed value. For example, $X$ be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space $S$ is:
+
+$$ S = {(H, H), (H, T), (T, H), (T, T) } $$
+
+This 4 possible outcomes of this experiment constitute the domain of \$X\$. For each outcome, the random variable is calculates in this way:
+
+$$  X(H, H) = 2  $$\$\$ X(H, T) = 1 \$\$
+
+$$  X(T, H) = 1 $$ \$\$ X(T, T) = 0 \$\$
+
+## Types of Random Variable
+
+In broader way, there are two categories of random variable:
+
+1.  Discrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing $X$ is a discrete random variable with observable values $\{0, 1, 2\}$ .
+
+2.  Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.
+
+### Density Functions
+
+### **Probability Mass Function** **(PMF)**
+
+The probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,\
+$$  f(x) = P(X = x) $$
+
+which follows the following properties:
+
+$$  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
+$S$ } $$\
+
+$$  \sum_{x \epsilon S} f(x) = 1  $$
+
+### **Probability Density Function** **(PDF)**
+
+The probability density function (PDF) a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,\
+$$ \int_{a}^{b} f(x)dx = P(a< X <b) \mbox{ for any $a, b$ \(\epsilon\) $S$ satisfying a < b }$$
+
+which follows the following properties:
+
+$$  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
+$S$ } $$
+
+$$  \int_{x \epsilon S} f(x)dx = 1  $$
+
+### **Cumulative Distribution Function** **(CDF)**
+
+The cumulative distribution function (PDF) a random variable is the likelihood that the variable is bounded within a given value. Mathematically,
+
+$$ F(x) = \sum_{z \epsilon S, z \leq x } f(z) \mbox{ for discrete random variables }$$\
+$$ F(x) = \int_{- \infty}^{x} f(z)dz  \mbox{ for continuous random variables }$$
+
+Furthermore,
+
+$$  P(a< X \leq b) = F(b) - F(a)  $$
+
+## Visualization
+
+For separating the actual environment in my local machine, I created a virtual environment and utilized the req.txt file to install the necessary library and packages.\
+
+#### Example of Jupyter Embedding:
+
+```{python}
+ 5 + 6 
+```
+
+-   Some embed:
+
+{{< embed penguins.ipynb#fig-bill_ratio >}}
+
+You may include the code from a cell along with the output by using the `echo=true` option. For example, to include the code and the plot from the cell labelled `species-counts` the embed would be:
+
+{{< embed penguins.ipynb#species-counts echo=true >}}
+
+Showing some graph:
+
+{{< embed penguins.ipynb#fig-bill-marginal >}}
+
+```{python}
+pow(2, 3)
+```

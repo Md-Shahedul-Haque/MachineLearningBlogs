@@ -2,9 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/welcome/index.html",
+      "/posts/randomVariable/penguins.html",
+      "/posts/rv/penguins.html",
+      "/posts/randomVariable/index.html",
       "/posts/post-with-code/index.html",
-      "/posts/post-with-python-code/index.html"
+      "/posts/rv/index.html",
+      "/posts/welcome/index.html"
     ]
   }
 ]
