@@ -171,73 +171,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "author": "Md Shahedul Haque",
   "date": "2023-11-27"
 } -->
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install pandas</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install altair</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install seaborn</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install matplotlib</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pmf" class="level2">
+<h2 class="anchored" data-anchor-id="pmf">PMF</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install scipy</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the binomial distribution</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PMF</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pmf <span class="op">=</span> binom.pmf(x, n, p)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: pandas in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (2.1.3)
-Requirement already satisfied: numpy&lt;2,&gt;=1.23.2 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas) (1.26.2)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas) (2023.3.post1)
-Requirement already satisfied: tzdata&gt;=2022.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas) (2023.3)
-Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.16.0)
-Requirement already satisfied: altair in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (5.1.2)
-Requirement already satisfied: jinja2 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (3.1.2)
-Requirement already satisfied: jsonschema&gt;=3.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (4.20.0)
-Requirement already satisfied: numpy in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (1.26.2)
-Requirement already satisfied: packaging in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (23.1)
-Requirement already satisfied: pandas&gt;=0.25 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (2.1.3)
-Requirement already satisfied: toolz in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from altair) (0.12.0)
-Requirement already satisfied: attrs&gt;=22.2.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from jsonschema&gt;=3.0-&gt;altair) (23.1.0)
-Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from jsonschema&gt;=3.0-&gt;altair) (2023.11.1)
-Requirement already satisfied: referencing&gt;=0.28.4 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from jsonschema&gt;=3.0-&gt;altair) (0.31.0)
-Requirement already satisfied: rpds-py&gt;=0.7.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from jsonschema&gt;=3.0-&gt;altair) (0.13.1)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas&gt;=0.25-&gt;altair) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas&gt;=0.25-&gt;altair) (2023.3.post1)
-Requirement already satisfied: tzdata&gt;=2022.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas&gt;=0.25-&gt;altair) (2023.3)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from jinja2-&gt;altair) (2.1.3)
-Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=0.25-&gt;altair) (1.16.0)
-Requirement already satisfied: seaborn in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (0.13.0)
-Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from seaborn) (1.26.2)
-Requirement already satisfied: pandas&gt;=1.2 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from seaborn) (2.1.3)
-Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.3 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from seaborn) (3.8.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (1.2.0)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (4.45.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (23.1)
-Requirement already satisfied: pillow&gt;=8 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (10.1.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (3.1.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2023.3.post1)
-Requirement already satisfied: tzdata&gt;=2022.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from pandas&gt;=1.2-&gt;seaborn) (2023.3)
-Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.3-&gt;seaborn) (1.16.0)
-Requirement already satisfied: matplotlib in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (3.8.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (1.2.0)
-Requirement already satisfied: cycler&gt;=0.10 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (4.45.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (1.4.5)
-Requirement already satisfied: numpy&lt;2,&gt;=1.21 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (1.26.2)
-Requirement already satisfied: packaging&gt;=20.0 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (23.1)
-Requirement already satisfied: pillow&gt;=8 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (10.1.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (3.1.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from matplotlib) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)</code></pre>
+<pre><code>Collecting scipy
+  Downloading scipy-1.11.4-cp311-cp311-macosx_12_0_arm64.whl.metadata (165 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 165.4/165.4 kB 4.2 MB/s eta 0:00:0000:01
+Requirement already satisfied: numpy&lt;1.28.0,&gt;=1.21.6 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from scipy) (1.26.2)
+Downloading scipy-1.11.4-cp311-cp311-macosx_12_0_arm64.whl (29.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.7/29.7 MB 20.1 MB/s eta 0:00:0000:0100:01
+Installing collected packages: scipy
+Successfully installed scipy-1.11.4</code></pre>
 </div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.bar(x, pmf)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Successes'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PMF of a Binomial Distribution (n=10, p=0.5)'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-pmf" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="penguins_files/figure-html/fig-pmf-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Probability Mass Function (PMF) of a discrete random variable with binomial distribution</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install pandas</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install altair</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install seaborn</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install matplotlib</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="11">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins.groupby(<span class="st">"species"</span>).size().reset_index(name <span class="op">=</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins.groupby(<span class="st">"species"</span>).size().reset_index(name <span class="op">=</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="species-counts" class="cell-output cell-output-display" data-execution_count="11">
 <div>
@@ -274,40 +271,40 @@ Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/
 </div>
 </div>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"#FF8C00"</span>, <span class="st">"#A020F0"</span>, <span class="st">"#008B8B"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.set_palette(colors, n_colors <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"#FF8C00"</span>, <span class="st">"#A020F0"</span>, <span class="st">"#008B8B"</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.set_palette(colors, n_colors <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">"bill_ratio"</span>] <span class="op">=</span> (</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   penguins[<span class="st">"bill_length_mm"</span>] <span class="op">/</span> penguins[<span class="st">"bill_depth_mm"</span>] </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_ratio"</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">"bill_ratio"</span>] <span class="op">=</span> (</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>   penguins[<span class="st">"bill_length_mm"</span>] <span class="op">/</span> penguins[<span class="st">"bill_depth_mm"</span>] </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_ratio"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-bill_ratio" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="penguins_files/figure-html/fig-bill_ratio-output-1.png" class="img-fluid figure-img" alt="A density plot of bill ratio by species."></p>
-<figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: <strong>?(caption)</strong></figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_depth_mm"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_length_mm"</span>, </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_depth_mm"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>sns.displot(penguins, </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> <span class="st">"bill_length_mm"</span>, </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            hue <span class="op">=</span> <span class="st">"species"</span>, </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            kind <span class="op">=</span> <span class="st">"kde"</span>, fill <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            aspect <span class="op">=</span> <span class="dv">2</span>, height <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-bill-marginal" class="cell quarto-layout-panel" data-execution_count="14">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -328,25 +325,25 @@ Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Marginal distributions of bill dimensions</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Marginal distributions of bill dimensions</figcaption><p></p>
 </figure>
 </div>
 </div>
 <div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scale <span class="op">=</span> alt.Scale(domain <span class="op">=</span> [<span class="st">'Adelie'</span>, <span class="st">'Chinstrap'</span>, <span class="st">'Gentoo'</span>],</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="bu">range</span> <span class="op">=</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scale <span class="op">=</span> alt.Scale(domain <span class="op">=</span> [<span class="st">'Adelie'</span>, <span class="st">'Chinstrap'</span>, <span class="st">'Gentoo'</span>],</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                  <span class="bu">range</span> <span class="op">=</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>alt.Chart(penguins).mark_circle(size<span class="op">=</span><span class="dv">60</span>).encode(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    alt.X(<span class="st">'bill_length_mm'</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    alt.Y(<span class="st">'bill_depth_mm'</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> alt.Color(<span class="st">'species'</span>, scale <span class="op">=</span> scale),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'species'</span>, <span class="st">'sex'</span>, <span class="st">'island'</span>]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>alt.Chart(penguins).mark_circle(size<span class="op">=</span><span class="dv">60</span>).encode(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    alt.X(<span class="st">'bill_length_mm'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    alt.Y(<span class="st">'bill_depth_mm'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> alt.Color(<span class="st">'species'</span>, scale <span class="op">=</span> scale),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'species'</span>, <span class="st">'sex'</span>, <span class="st">'island'</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 
 <style>
@@ -418,6 +415,7 @@ Requirement already satisfied: six&gt;=1.5 in /Users/mdshahedulhaque/miniconda3/
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

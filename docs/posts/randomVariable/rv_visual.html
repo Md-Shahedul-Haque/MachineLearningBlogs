@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Md Shahedul Haque">
-<meta name="dcterms.date" content="2023-11-23">
 
-<title>MachineLearningBlogs - Random Variable</title>
+<title>MachineLearningBlogs - Random Variable Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,13 +94,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,32 +140,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Random Variable</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">random variable</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
-                <div class="quarto-category">visualization</div>
-              </div>
-                  </div>
+      <h1 class="title">Random Variable Visualization</h1>
+                      </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Md Shahedul Haque </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 23, 2023</p>
-      </div>
-    </div>
     
       
     </div>
@@ -178,152 +156,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp"><i class="bi bi-journal-code"></i>Random Variable with Scipy Library</a></li></ul></div></div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="random-variable-in-machine-learning" class="level1">
-<h1>Random Variable in Machine Learning</h1>
-<p>A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually <span class="math inline">\(X\)</span> ) where small letter (<span class="math inline">\(x\)</span>) denotes the observed value. For example, <span class="math inline">\(X\)</span> be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space <span class="math inline">\(S\)</span> is:</p>
-<p><span class="math display">\[ S = {(H, H), (H, T), (T, H), (T, T) } \]</span></p>
-<p>This 4 possible outcomes of this experiment constitute the domain of $X$. For each outcome, the random variable is calculates in this way:</p>
-<p><span class="math display">\[  X(H, H) = 2  \]</span>$$ X(H, T) = 1 $$</p>
-<p><span class="math display">\[  X(T, H) = 1 \]</span> $$ X(T, T) = 0 $$</p>
-<section id="types-of-random-variable" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-random-variable">Types of Random Variable</h2>
-<p>In broader way, there are two categories of random variable:</p>
-<ol type="1">
-<li><p>Discrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing <span class="math inline">\(X\)</span> is a discrete random variable with observable values <span class="math inline">\(\{0, 1, 2\}\)</span> .</p></li>
-<li><p>Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.</p></li>
-</ol>
-<section id="density-functions" class="level3">
-<h3 class="anchored" data-anchor-id="density-functions">Density Functions</h3>
-</section>
-<section id="probability-mass-function-pmf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-mass-function-pmf"><strong>Probability Mass Function</strong> <strong>(PMF)</strong></h3>
-<p>The probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,<br>
-<span class="math display">\[  f(x) = P(X = x) \]</span></p>
-<p>which follows the following properties:</p>
-<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
-$S$ } \]</span><br>
-</p>
-<p><span class="math display">\[  \sum_{x \epsilon S} f(x) = 1  \]</span></p>
-<p>Code snippet for calculating PMF of a discrete random variable which follows binomial distribution:</p>
-<div class="quarto-embed-nb-cell">
-<div id="pmf-binomial" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the binomial distribution</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PMF</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pmf <span class="op">=</span> binom.pmf(x, n, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="pmf" class="level2">
+<h2 class="anchored" data-anchor-id="pmf">PMF</h2>
+<div class="cell" data-outputid="4340104a-6006-444c-bdcc-a63e749e2d66" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install scipy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: scipy in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (1.11.4)
+Requirement already satisfied: numpy&lt;1.28.0,&gt;=1.21.6 in /Users/mdshahedulhaque/miniconda3/envs/jupyter_venv/lib/python3.11/site-packages (from scipy) (1.26.2)</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp#pmf-binomial">Source: Random Variable with Scipy Library</a></div>
-<p>Then we can plot the PMF of that variable better visualization</p>
-<div class="quarto-embed-nb-cell">
+</div>
+<div id="pmf-binomial" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the binomial distribution</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PMF</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>pmf <span class="op">=</span> binom.pmf(x, n, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-outputid="b03cff96-e8b2-453a-9b31-9fb23d0ed2f9" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.bar(x, pmf)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Successes'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PMF of a Binomial Distribution (n=10, p=0.5)'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-pmf" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-pmf-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="rv_visual_files/figure-html/fig-pmf-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Probability Mass Function (PMF) of a discrete random variable with binomial distribution</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Random Variable with Scipy Library</a></div>
 </section>
-<section id="probability-density-function-pdf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-density-function-pdf"><strong>Probability Density Function</strong> <strong>(PDF)</strong></h3>
-<p>The probability density function (PDF) of a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,<br>
-<span class="math display">\[ \int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \mbox{ for any $a, b$ \(\epsilon\) $S$ satisfying a &lt; b }\]</span></p>
-<p>which follows the following properties:</p>
-<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
-$S$ } \]</span></p>
-<p><span class="math display">\[  \int_{x \epsilon S} f(x)dx = 1  \]</span></p>
-<p>Code snippet for calculating PDF of a continuous random variable which follows normal distribution:</p>
-<div class="quarto-embed-nb-cell">
+<section id="pdf" class="level2">
+<h2 class="anchored" data-anchor-id="pdf">PDF</h2>
 <div id="pdf-normal" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the normal distribution</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PDF</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> norm.pdf(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the normal distribution</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PDF</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> norm.pdf(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp#pdf-normal">Source: Random Variable with Scipy Library</a></div>
-<p>Then we can plot the PDF of that variable better visualization</p>
-<div class="quarto-embed-nb-cell">
 <div class="cell" data-outputid="85991fc6-8ce4-4d5b-d381-b6890a57c44a" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, pdf)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability Density'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PDF of a Normal Distribution (mu=0, sigma=1)'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-pdf" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-pdf-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="rv_visual_files/figure-html/fig-pdf-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: Probability Density Function (PDF) of a continous random variable with normal distribution</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-4" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Random Variable with Scipy Library</a></div>
 </section>
-<section id="cumulative-distribution-function-cdf" class="level3">
-<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><strong>Cumulative Distribution Function</strong> <strong>(CDF)</strong></h3>
-<p>The cumulative distribution function (CDF) of a random variable is the likelihood that the variable is bounded within a given value. Mathematically,</p>
-<p><span class="math display">\[ F(x) = \sum_{z \epsilon S, z \leq x } f(z) \mbox{ for discrete random variables }\]</span><br>
-<span class="math display">\[ F(x) = \int_{- \infty}^{x} f(z)dz  \mbox{ for continuous random variables }\]</span></p>
-<p>Furthermore,</p>
-<p><span class="math display">\[  P(a&lt; X \leq b) = F(b) - F(a)  \]</span></p>
-<p>Code snippet for calculating CDF of a continuous random variable which follows normal distribution:</p>
-<div class="quarto-embed-nb-cell">
+<section id="cdf" class="level2">
+<h2 class="anchored" data-anchor-id="cdf">CDF</h2>
 <div id="cdf-normal" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the normal distribution</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PDF</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> norm.cdf(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the normal distribution</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PDF</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> norm.cdf(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-5" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp#cdf-normal">Source: Random Variable with Scipy Library</a></div>
-<p>Then we can plot the CDF of that variable better visualization</p>
-<div class="quarto-embed-nb-cell">
 <div class="cell" data-outputid="011d788f-1027-4f3f-e35f-e2ef627b1ee2" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, cdf)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cumulative Probability'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'CDF of a Normal Distribution (mu=0, sigma=1)'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-cdf" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-cdf-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="rv_visual_files/figure-html/fig-cdf-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: Cumulative Distribution Function (CDF) of a continous random variable with normal distribution</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-6" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Random Variable with Scipy Library</a></div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
