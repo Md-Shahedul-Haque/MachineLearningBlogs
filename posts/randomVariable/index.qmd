@@ -2,15 +2,15 @@
 title: "Random Variable"
 author: "Md Shahedul Haque"
 date: "2023-11-23"
-categories: [random variable, code, analysis, visualization]
+categories: [random variable, code, visualization]
 image: "rv.png"
 notebook-view:
-  - notebook: rv_visual.ipynb
+  - notebook: _rv_visual.ipynb
     title: "Random Variable with Scipy Library"
     url: https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp
 ---
 
-# Random Variable in Machine Learning
+## Random Variable in Machine Learning
 
 A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually $X$ ) where small letter ($x$) denotes the observed value. For example, $X$ be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space $S$ is:
 
@@ -30,7 +30,7 @@ In broader way, there are two categories of random variable:
 
 2.  Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.
 
-### Density Functions
+## Density Functions
 
 ### **Probability Mass Function** **(PMF)**
 
@@ -46,11 +46,11 @@ $$  \sum_{x \epsilon S} f(x) = 1  $$
 
 Code snippet for calculating PMF of a discrete random variable which follows binomial distribution:
 
-{{< embed rv_visual.ipynb#pmf-binomial echo=true >}}
+{{< embed _rv_visual.ipynb#pmf-binomial echo=true >}}
 
 Then we can plot the PMF of that variable better visualization
 
-{{< embed rv_visual.ipynb#fig-pmf >}}
+{{< embed _rv_visual.ipynb#fig-pmf >}}
 
 ### **Probability Density Function** **(PDF)**
 
@@ -66,11 +66,11 @@ $$  \int_{x \epsilon S} f(x)dx = 1  $$
 
 Code snippet for calculating PDF of a continuous random variable which follows normal distribution:
 
-{{< embed rv_visual.ipynb#pdf-normal echo=true >}}
+{{< embed _rv_visual.ipynb#pdf-normal echo=true >}}
 
 Then we can plot the PDF of that variable better visualization
 
-{{< embed rv_visual.ipynb#fig-pdf >}}
+{{< embed _rv_visual.ipynb#fig-pdf >}}
 
 ### **Cumulative Distribution Function** **(CDF)**
 
@@ -85,8 +85,8 @@ $$  P(a< X \leq b) = F(b) - F(a)  $$
 
 Code snippet for calculating CDF of a continuous random variable which follows normal distribution:
 
-{{< embed rv_visual.ipynb#cdf-normal echo=true >}}
+{{< embed _rv_visual.ipynb#cdf-normal echo=true >}}
 
 Then we can plot the CDF of that variable better visualization
 
-{{< embed rv_visual.ipynb#fig-cdf >}}
+{{< embed _rv_visual.ipynb#fig-cdf >}}
