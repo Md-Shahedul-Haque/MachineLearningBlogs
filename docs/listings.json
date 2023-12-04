@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/clustering/index.html",
       "/posts/randomVariable/index.html",
       "/posts/post-with-code/index.html",
-      "/posts/clustering/index.html",
       "/posts/welcome/index.html"
     ]
   }

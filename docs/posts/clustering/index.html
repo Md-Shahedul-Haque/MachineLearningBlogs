@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Md Shahedul Haque">
-<meta name="dcterms.date" content="2023-10-22">
+<meta name="dcterms.date" content="2023-11-27">
 
 <title>MachineLearningBlogs - Clustering</title>
 <style>
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 22, 2023</p>
+        <p class="date">November 27, 2023</p>
       </div>
     </div>
     
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp"><i class="bi bi-journal-code"></i>Clustering with Scipy Library</a></li></ul></div></div>
+    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6"><i class="bi bi-journal-code"></i>Clustering with scikit-learn Library</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -188,87 +188,134 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="clustering-in-machine-learning" class="level2">
 <h2 class="anchored" data-anchor-id="clustering-in-machine-learning">Clustering in Machine Learning</h2>
-<p>A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually <span class="math inline">\(X\)</span> ) where small letter (<span class="math inline">\(x\)</span>) denotes the observed value. For example, <span class="math inline">\(X\)</span> be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space <span class="math inline">\(S\)</span> is:</p>
-<p><span class="math display">\[ S = {(H, H), (H, T), (T, H), (T, T) } \]</span></p>
-<p>This 4 possible outcomes of this experiment constitute the domain of $X$. For each outcome, the random variable is calculates in this way:</p>
-<p><span class="math display">\[  X(H, H) = 2  \]</span>$$ X(H, T) = 1 $$</p>
-<p><span class="math display">\[  X(T, H) = 1 \]</span> $$ X(T, T) = 0 $$</p>
-</section>
-<section id="types-of-random-variable" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-random-variable">Types of Random Variable</h2>
-<p>In broader way, there are two categories of random variable:</p>
+<p>Broadly there are three types of learning methods in ML:</p>
 <ol type="1">
-<li><p>Discrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing <span class="math inline">\(X\)</span> is a discrete random variable with observable values <span class="math inline">\(\{0, 1, 2\}\)</span> .</p></li>
-<li><p>Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.</p></li>
+<li><p>Supervised learning method: Label for corresponding datapoint is available.</p></li>
+<li><p>Unsupervised learning method: Label for corresponding datapoint is unavailable.</p></li>
+<li><p>Semisupervised learning method: Lable is available only for a small portion of all the datapoints, most of the datapoints lack label.</p></li>
 </ol>
+<p>Clustering belongs to the category of unsupervised learning method. Generally, it is utilized as a process for finding meaningful structure, explanatory underlying processes, generative features, and groupings inherent in a set of examples. Clustering&nbsp;is the task of dividing the population or data points into a number of disjoint sets such that data points in the same sets are more similar to other data points in the same set and dissimilar to the data points in other sets. Consequently, clustering forms a collection of objects on the basis of similarity and dissimilarity between them.&nbsp;</p>
 </section>
-<section id="density-functions" class="level2">
-<h2 class="anchored" data-anchor-id="density-functions">Density Functions</h2>
-<section id="probability-mass-function-pmf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-mass-function-pmf"><strong>Probability Mass Function</strong> <strong>(PMF)</strong></h3>
-<p>The probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,<br>
-<span class="math display">\[  f(x) = P(X = x) \]</span></p>
-<p>which follows the following properties:</p>
-<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
-$S$ } \]</span><br>
-</p>
-<p><span class="math display">\[  \sum_{x \epsilon S} f(x) = 1  \]</span></p>
-<p>Code snippet for calculating PMF of a discrete random variable which follows binomial distribution:</p>
+<section id="clustering-methods" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-methods">Clustering methods</h2>
+<p>Clustering shapes the intrinsic grouping among the unlabelled data. There are no standard for good clustering. It depends on the user, and what criteria they may use which satisfy their need. Based on the assumptions and goal of the task, clustering algorithms can be divided into several categories:&nbsp;</p>
+<ul>
+<li><p><strong>Density-Based Methods:</strong> Dense region has some similarities and is different from the lower dense region. For example, DBSCAN (Density-Based Spatial Clustering of Applications with Noise), OPTICS (Ordering Points to Identify Clustering Structure), etc.</p></li>
+<li><p><strong>Hierarchical Based Methods:</strong> Forms a tree-type structure based on the hierarchy. Later, new clusters are formed using the previously formed one. It is further divided into two categories:</p>
+<ul>
+<li><p>Agglomerative (bottom-up approach)</p></li>
+<li><p>Divisive (top-down approach)</p>
+<p>Examples include CURE (Clustering Using Representatives), BIRCH (Balanced Iterative Reducing Clustering and using Hierarchies), etc.</p></li>
+</ul></li>
+<li><p><strong>Partitioning Methods:</strong> Partitions the datapoints into <span class="math inline">\(k\)</span> clusters and each partition forms one cluster. Focus is optimizing an objective criterion similarity function. For instance, K-means, CLARANS (Clustering Large Applications based upon Randomized Search), etc.</p></li>
+<li><p><strong>Grid-based Methods:</strong> Data space is formulated into a finite number of cells that form. Such as, STING (Statistical Information Grid), WaveCluster, CLIQUE (CLustering In Quest), etc.</p></li>
+</ul>
+</section>
+<section id="density-functions-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="density-functions-visualization">Density Functions Visualization</h2>
+<section id="k-means-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="k-means-clustering">K-means Clustering</h3>
+<p>It is the simplest clustering algorithm. It partitions given <span class="math inline">\(n\)</span> observations into predefined <span class="math inline">\(k\)</span> clusters. The basis for such clustering is the nearest mean from the <span class="math inline">\(k\)</span> centroids. Clusters formed in K-Means are spherical or convex in shape.</p>
+<p>Code snippet for K-means clustering on the Palmer Penguins dataset:</p>
 <div class="quarto-embed-nb-cell">
-<div id="pmf-binomial" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters for the binomial distribution</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generate the values for x</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, n<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the PMF</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pmf <span class="op">=</span> binom.pmf(x, n, p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="kmc" class="cell" data-outputid="269aac80-eb18-4f5b-c20d-011c1b245f9a" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(penguins.head())</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins.dropna()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features for clustering (e.g., flipper length and body mass)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins[[<span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform K-means clustering with 3 clusters</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>num_clusters <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>num_clusters, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>penguins.loc[:, <span class="st">'Cluster'</span>] <span class="op">=</span> kmeans.fit_predict(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species     island  bill_length_mm  bill_depth_mm  flipper_length_mm  \
+0  Adelie  Torgersen            39.1           18.7              181.0   
+1  Adelie  Torgersen            39.5           17.4              186.0   
+2  Adelie  Torgersen            40.3           18.0              195.0   
+3  Adelie  Torgersen             NaN            NaN                NaN   
+4  Adelie  Torgersen            36.7           19.3              193.0   
+
+   body_mass_g     sex  year  
+0       3750.0    male  2007  
+1       3800.0  female  2007  
+2       3250.0  female  2007  
+3          NaN     NaN  2007  
+4       3450.0  female  2007  </code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp#pmf-binomial">Source: Clustering with Scipy Library</a></div>
-<p>Then we can plot the PMF of that variable better visualization</p>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6#kmc">Source: Clustering with scikit-learn Library</a></div>
+<p>If the user choose number of clusters to be <span class="math inline">\(3\)</span> and relevant features for clustering are <em>Flipper Length (mm)</em> and <em>Body Mass (g),</em> we can observe the following clustering:</p>
 <div class="quarto-embed-nb-cell">
-<div class="cell" data-outputid="b03cff96-e8b2-453a-9b31-9fb23d0ed2f9" data-execution_count="14">
+<div class="cell" data-outputid="10e34918-d20d-4fc6-86a4-e1d898a980d5" data-execution_count="19">
 <div class="cell-output cell-output-display">
-<div id="fig-pmf" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-kmc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-pmf-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Probability Mass Function (PMF) of a discrete random variable with binomial distribution</figcaption>
+<p><img src="index_files/figure-html/fig-kmc-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: K-means clustering on the Palmer Penguins dataset</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Clustering with Scipy Library</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6">Source: Clustering with scikit-learn Library</a></div>
+<p>We can observe the centroid (marked as red circle) of the three clusters from K-means clustering.</p>
 </section>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section"></h3>
 </section>
-<section id="probability-density-function-pdf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-density-function-pdf"><strong>Probability Density Function</strong> <strong>(PDF)</strong></h3>
-<p>The probability density function (PDF) a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,<br>
-<span class="math display">\[ \int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \mbox{ for any $a, b$ \(\epsilon\) $S$ satisfying a &lt; b }\]</span></p>
-<p>which follows the following properties:</p>
-<p><span class="math display">\[  f(x) \geq 0 \mbox{ for any $x$ \(\epsilon\)
-$S$ } \]</span></p>
-<p><span class="math display">\[  \int_{x \epsilon S} f(x)dx = 1  \]</span></p>
-</section>
-<section id="cumulative-distribution-function-cdf" class="level3">
-<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><strong>Cumulative Distribution Function</strong> <strong>(CDF)</strong></h3>
-<p>The cumulative distribution function (PDF) a random variable is the likelihood that the variable is bounded within a given value. Mathematically,</p>
-<p><span class="math display">\[ F(x) = \sum_{z \epsilon S, z \leq x } f(z) \mbox{ for discrete random variables }\]</span><br>
-<span class="math display">\[ F(x) = \int_{- \infty}^{x} f(z)dz  \mbox{ for continuous random variables }\]</span></p>
-<p>Furthermore,</p>
-<p><span class="math display">\[  P(a&lt; X \leq b) = F(b) - F(a)  \]</span></p>
-</section>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"></h2>
+<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level3">
+<h3 class="anchored" data-anchor-id="dbscan-density-based-spatial-clustering-of-applications-with-noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</h3>
+<p>Partitioning methods (K-means, PAM clustering) and hierarchical clustering focus on finding spherical-shaped clusters or convex clusters. As a result, they are suitable only for compact and well-separated clusters. Moreover, their performance deteriorate with the presence of noise and outliers in the data. DBSCAN can handle dataset containing non-convex shape clusters and outliers. The basis for this clustering are the maximum distance between two samples for them to be considered neighbors and the minimum number of samples in a neighborhood within that radius.</p>
+<p>Code snippet for DBSCAN on the Palmer Penguins dataset:</p>
+<div class="quarto-embed-nb-cell">
+<div id="dbscan" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins.dropna()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features for clustering (e.g., flipper length and body mass)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins[[<span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform DBSCAN clustering</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust eps and min_samples based on data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="dv">75</span>, min_samples<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>penguins.loc[:, <span class="st">'Cluster'</span>] <span class="op">=</span> dbscan.fit_predict(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<a class="quarto-notebook-link" id="nblink-3" href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6#dbscan">Source: Clustering with scikit-learn Library</a></div>
+<p>If the user choose the maximum distance between two samples to be <span class="math inline">\(75\)</span>, the minimum number of samples in a neighborhood within that radius to be <span class="math inline">\(15\)</span> and relevant features for clustering are <em>Flipper Length (mm)</em> and <em>Body Mass (g)</em>, we can observe the following clustering:</p>
+<div class="quarto-embed-nb-cell">
+<div class="cell" data-outputid="21c98c8c-2706-4f60-a286-af3d3852c304" data-execution_count="56">
+<div class="cell-output cell-output-display">
+<div id="fig-dbscan" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-dbscan-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: DBSCAN on the Palmer Penguins dataset</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-4" href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6">Source: Clustering with scikit-learn Library</a></div>
+<p>Even though it got us three clusters, this one is quite different from the previous one we got from K-means clustering. This clustering provides irregular shape other than the spherical-shaped clusters or convex clusters.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
