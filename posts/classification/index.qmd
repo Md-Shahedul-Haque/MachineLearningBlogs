@@ -29,8 +29,6 @@ Classification algorithms are of two types:  
 
 2.  **Multiclass Classification**: Classifies the input into one of several classes or categories. For instance, given an image the model categorize which type of dress it is.
 
-    ![Binary vs Multiclass classification](classification.png)
-
 Depending on the nature of relationship (linear or nonlinear) between independent and dependent variables, classification can be considered two types:
 
 1.  **Linear Classifications:** Logistic Regression, Support Vector Machine (with kernel = 'linear'), Single-layer Perceptron, Stochastic Gradient Descent (SGD) Classifier
