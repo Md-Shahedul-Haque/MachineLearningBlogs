@@ -12,7 +12,7 @@ notebook-view:
     url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb
 ---
 
-## Regression in Machine Learning  {#sec-listTypes}
+## Regression in Machine Learning {#sec-listTypes}
 
 Supervised machine learning is a type of machine learning where the algorithm learns from labelled data. Labeled data means the dataset whose respective target value is already known. Depending on the output of models, we can divide Supervised machine learning models into two categories:
 
@@ -140,7 +140,7 @@ Since the red dots (predicted data) is close to the green (actual data) line, th
 
 Nonlinear regression is a statistical technique which assists in describing the non linearity in relationship between independent and dependent variables. Nonlinear regression models are described with a nonlinear equation. Typically, nonlinear regression is well suited to explain relations between variables in real life data. There are a lot of nonlinear regression models, refer to the previously mentioned list of regression techniques in section @sec-listTypes if needed. In the scope of this blog, we confine our discussions to two types of nonlinear regression.
 
-### Support Vector Regressor (SVR) 
+### Support Vector Regressor (SVR)
 
 Support vector regression (SVR) is a type of support vector machine (SVM) that is used for regression tasks. It attempts to find a function that best predicts the continuous output value of target for given input values of independent variables. SVR can have both linear and non-linear kernels. We will be using a radial basis function (RBF) kernel which is a non linear one.
 

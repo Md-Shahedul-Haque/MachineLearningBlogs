@@ -4,15 +4,15 @@ project:
 
 website:
   title: "Machine Learning Blogs"
-#  repo-url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
-#  repo-actions: [source]
+  repo-url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
+  repo-actions: [source]
   navbar:
     right:
       - about.qmd
       - icon: github
         href: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/shahedul_shawon
       - icon: linkedin
         href: https://www.linkedin.com/in/md-shahedul-haque-shawon-5023491b7/
 format:

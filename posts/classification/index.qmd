@@ -72,9 +72,9 @@ Depending on the specific problem and requirements, we have to choose among seve
 
     It is also a useful metric for imbalanced datasets where both precision and recall are important.
 
--   **ROC curve and AUC:** The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier\'s decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).
+-   **ROC curve and AUC:** The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier's decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).
 
--   **Cross-validation:** A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model\'s performance.
+-   **Cross-validation:** A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model's performance.
 
 ## Visualization
 
@@ -82,9 +82,7 @@ To understand how classification models works, we study three classifiers and co
 
 ### Iris Dataset
 
-We will be using [Iris Dataset](https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1469-1809.1936.tb02137.x) for visualizing classifier models. This dataset was first used by Sir R.A. Fisher in his paper. This is perhaps the best known database to be found in the
-pattern recognition literature. The data set contains three classes of $50$ instances each, where each class refers to a type of iris plant. One class is linearly separable from the other two; the
-latter are **not** linearly separable from each other. Features in this dataset are sepal length, sepal width, petal length, petal width in cm. Target variable can be of these three categories: Setosa, Versicolour, Virginica (represented by $0, 1, 2$ respectively in the dataset).
+We will be using [Iris Dataset](https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1469-1809.1936.tb02137.x) for visualizing classifier models. This dataset was first used by Sir R.A. Fisher in his paper. This is perhaps the best known database to be found in the pattern recognition literature. The data set contains three classes of $50$ instances each, where each class refers to a type of iris plant. One class is linearly separable from the other two; the latter are **not** linearly separable from each other. Features in this dataset are sepal length, sepal width, petal length, petal width in cm. Target variable can be of these three categories: Setosa, Versicolour, Virginica (represented by $0, 1, 2$ respectively in the dataset).
 
 Code snippet for loading this dataset and checking its description:
 
@@ -102,7 +100,7 @@ We utilize the scikit-learn machine library to create our SVM model with linear 
 
 ### Naive Bayes Classifier
 
-Naive Bayes classifiers are a collection of classification algorithms based on Bayes\' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome
+Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome
 
 Code snippet for creating a gaussian naive bayes classifier model:
 
