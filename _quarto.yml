@@ -3,14 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "MachineLearningBlogs"
+  title: "Machine Learning Blogs"
+  repo-url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
+  repo-actions: [source]
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
       - icon: twitter
         href: https://twitter.com
+      - icon: linkedin
+        href: https://www.linkedin.com/in/md-shahedul-haque-shawon-5023491b7/
 format:
   html:
     theme: cosmo

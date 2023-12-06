@@ -2,7 +2,7 @@
 title: "Welcome To My Blog"
 author: "Md Shahedul Haque (Shawon)"
 date: "2023-9-24"
-categories: [Start]
+categories: [First Blog, Quarto]
 ---
 
 This is my first post in a Quarto blog. Welcome!

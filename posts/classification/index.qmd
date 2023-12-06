@@ -1,0 +1,130 @@
+---
+title: "Classification"
+number-sections: true
+author: "Md Shahedul Haque"
+date: "2023-12-02"
+categories: [Classification, Code, Visualization]
+image: "classification.png"
+notebook-view:
+  - notebook: _classification_visual.ipynb
+    title: "Classification with scikit-learn Library"
+    url: https://colab.research.google.com/drive/1p0rScO2OY9f5UO8qNiHj7b6EiBGE7wcl#scrollTo=a6ajWqcZE6c5
+---
+
+## Classification in Machine Learning {#sec-listTypes}
+
+Supervised machine learning is a type of machine learning where the algorithm learns from labelled data. Labeled data means the dataset whose respective target value is already known. Depending on the output of models, we can divide Supervised machine learning models into two categories:
+
+1.  **Regression:** It predicts the continuous output variables based on the independent input variable. Such as, the prediction of house prices based on different parameters like house age, distance from the main road, location, area, etc.
+
+2.  **Classification:** It predicts the class/category of a datapoint based on the independent input variable. Here, outcome is a categorical or discrete value. For example, given image of an animal is a cat or dog.
+
+Classification is a method for categorizing data or objects into predefined classes or categories based on their features or attributes. Even though classification comprises a small part of Machine Learning as a whole, it is one of the most important ones. 
+
+## Types of Classification
+
+Classification algorithms are of two types:  
+
+1.  **Binary Classification**: Classifies the input into one of two classes. Example -- on the basis of the given medical image of a person, the model determine whether the person has a certain disease or not.
+
+2.  **Multiclass Classification**: Classifies the input into one of several classes or categories. For instance, given an image the model categorize which type of dress it is.
+
+    ![Binary vs Multiclass classification](classification.png)
+
+Depending on the nature of relationship (linear or nonlinear) between independent and dependent variables, classification can be considered two types:
+
+1.  **Linear Classifications:** Logistic Regression, Support Vector Machine (with kernel = 'linear'), Single-layer Perceptron, Stochastic Gradient Descent (SGD) Classifier
+
+2.  **Non-linear Classifications:** K-Nearest Neighbours, Support Vector Machine, Naive Bayes, Decision Tree Classifier, Ensemble learning Classifier (Random Forests, Adaboost, Bagging Classifier, Voting Classifier, ExtraTrees Classifier), Multi-layer Artificial Neural Networks
+
+On the basis of learners, classification can be divided into two types:
+
+1.  **Lazy Learners**: They are instance-based learners since they do not learn a model during the training phase. Instead, they simply store the training data and use it to classify new instances at prediction time. As a result, It is very fast at prediction time because it does not require computations during the predictions. On the other hand, it is less effective in high-dimensional spaces or when the number of training instances is large. Examples include k-nearest neighbors and case-based reasoning.
+
+2.  **Eager Learners**:They are model-based learners as they learn a model from the training data during the training phase and use this model to classify new instances at prediction time. Consequently, it is slower at prediction time but it is more effective in high-dimensional spaces having large training datasets. Examples of eager learners include decision trees, random forests, and support vector machines.
+
+## Evaluation Metrics
+
+Depending on the specific problem and requirements, we have to choose among several metrics and techniques to evaluate a classification model. Some commonly used evaluation metrics are:
+
+-   **Accuracy:** This simple and intuitive metric can be misleading in imbalanced datasets where the majority class dominates the accuracy score.
+
+    $$
+    Accuracy = \frac{\mbox{Correctly classified instances}}{\mbox{Total instances}}
+    $$
+
+-   **Confusion matrix:** A table that shows the number of true positives, true negatives, false positives, and false negatives for each class.
+
+-   **Precision and Recall:** These metrics are useful in scenarios where there is a trade-off between false positives and false negatives, or when one class is more important than the other.
+
+    $$
+    Precision = \frac{\mbox{True positives}}{\mbox{Total number of predicted positives}}
+    $$
+
+    $$
+    Recall = \frac{\mbox{True positives}}{\mbox{Total number of actual positives}}
+    $$
+
+-   **F1-Score:** The harmonic mean of precision and recall, calculated as
+
+    $$
+    F1-Score = \frac{2 *\mbox{precision} * \mbox{recall}}{\mbox{precision + recall}}
+    $$
+
+    It is also a useful metric for imbalanced datasets where both precision and recall are important.
+
+-   **ROC curve and AUC:** The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier\'s decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).
+
+-   **Cross-validation:** A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model\'s performance.
+
+## Visualization
+
+To understand how classification models works, we study three classifiers and compare their performance a standard data set, the Iris data set. 
+
+### Iris Dataset
+
+We will be using [Iris Dataset](https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1469-1809.1936.tb02137.x) for visualizing classifier models. This dataset was first used by Sir R.A. Fisher in his paper. This is perhaps the best known database to be found in the
+pattern recognition literature. The data set contains three classes of $50$ instances each, where each class refers to a type of iris plant. One class is linearly separable from the other two; the
+latter are **not** linearly separable from each other. Features in this dataset are sepal length, sepal width, petal length, petal width in cm. Target variable can be of these three categories: Setosa, Versicolour, Virginica (represented by $0, 1, 2$ respectively in the dataset).
+
+Code snippet for loading this dataset and checking its description:
+
+{{< embed _classification_visual.ipynb#load_dataset echo=true >}}
+
+Also we split the $50$ records for train and test following $80-20$ ratio
+
+### Support Vector Machine
+
+Support Vector Machine (SVM) is mostly used for linear or nonlinear classification. But its application is also observed in regression problems, and even outlier detection tasks. SVM algorithms are very effective as they try to find the maximum separating hyperplane between the different classes available in the target feature.
+
+We utilize the scikit-learn machine library to create our SVM model with linear kernel. Before training we perform feature scaling which is a must for SVM to speed up convergence and improve model performance. Code snippet for this is:
+
+{{< embed _classification_visual.ipynb#svm_model echo=true >}}
+
+### Naive Bayes Classifier
+
+Naive Bayes classifiers are a collection of classification algorithms based on Bayes\' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome
+
+Code snippet for creating a gaussian naive bayes classifier model:
+
+{{< embed _classification_visual.ipynb#nb_model echo=true >}}
+
+### Decision Tree Classifier
+
+Decision tree is a versatile supervised learning algorithms used for both classification and regression tasks. It consists of a flowchart-like tree structure. Here, each internal node denotes a test on an attribute, each branch represents an outcome of the test. Each leaf node (terminal node) holds a class label. During training, it is constructed by recursively splitting the training data into subsets based on the values of the attributes until a stopping criterion is met, such as the maximum depth of the tree or the minimum number of samples required to split a node.
+
+Code snippet for creating a decision tree classifier model:
+
+{{< embed _classification_visual.ipynb#dtc_model echo=true >}}
+
+### Performance Evaluation
+
+Later, we evaluate the performance of the models:
+
+{{< embed _classification_visual.ipynb#performance echo=true >}}
+
+Since, the dataset is too small, performance of the models are pretty close except Support Vector Machine. To understand better, we take a closer at the predictions made by the models though confusion matrix:
+
+{{< embed _classification_visual.ipynb#conf_matrix echo=true >}}
+
+As we can predict, Decision Tree and Naive Bayes perform the best. But Support Vector Machine makes a mistake while predicting a sample "veriscolor" class (mistook it as "virginica" class).
