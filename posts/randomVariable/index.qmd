@@ -9,6 +9,7 @@ notebook-view:
   - notebook: _rv_visual.ipynb
     title: "Random Variable with Scipy Library"
     # url: https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp
+    url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/randomVariable/_rv_visual.ipynb
 ---
 
 ## Probability Theory and Random Variable in Machine Learning

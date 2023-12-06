@@ -9,6 +9,7 @@ notebook-view:
   - notebook: _cluster_visual.ipynb
     title: "Clustering with scikit-learn Library"
    # url: https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6
+    url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/clustering/_cluster_visual.ipynb
 ---
 
 ## Clustering in Machine Learning

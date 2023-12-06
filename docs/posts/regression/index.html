@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="_regression_visual.ipynb.html"><i class="bi bi-journal-code"></i>Linear and Nonlinear Regression with scikit-learn Library</a></li></ul></div></div>
+    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb"><i class="bi bi-journal-code"></i>Linear and Nonlinear Regression with scikit-learn Library</a></li></ul></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -336,7 +336,7 @@ It can be downloaded/loaded using the
 4    -122.25        3.422  </code></pre>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="_regression_visual.ipynb.html#load_dataset">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#load_dataset">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Next, we choose some features as independent features such as, median income in block group, median house age, average number of rooms and bedrooms per household, average number of household members and block group population. In this case, our target (dependent) variable is median value of the house (in units of <span class="math inline">\(100,000\)</span>). Also we split the <span class="math inline">\(20640\)</span> records for train and test following <span class="math inline">\(80-20\)</span> ratio:</p>
 <div class="quarto-embed-nb-cell">
 <div id="feature" class="cell" data-execution_count="49">
@@ -351,7 +351,7 @@ It can be downloaded/loaded using the
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="_regression_visual.ipynb.html#feature">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#feature">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 </section>
 <section id="visualization-for-linear-regression-model" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="visualization-for-linear-regression-model"><span class="header-section-number">2.4</span> Visualization for Linear Regression Model</h3>
@@ -374,7 +374,7 @@ It can be downloaded/loaded using the
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="_regression_visual.ipynb.html#linreg_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-3" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#linreg_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>We create a generic function which takes prediction label and actual label for evaluating the performance of our model. Code snippet for this function:</p>
 <div class="quarto-embed-nb-cell">
 <div id="performance" class="cell" data-execution_count="51">
@@ -392,7 +392,7 @@ It can be downloaded/loaded using the
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f'Root Mean Squared Error (RMSE): </span><span class="sc">{</span>rmse<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f'R-squared (R²): </span><span class="sc">{</span>r2<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-4" href="_regression_visual.ipynb.html#performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-4" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Later, we utilize this function to evaluate the performance of our linear regression model:</p>
 <div class="quarto-embed-nb-cell">
 <div id="linreg_performance" class="cell" data-outputid="eccb94ae-a0eb-42d3-f27b-ef55a707f97c" data-execution_count="52">
@@ -404,7 +404,7 @@ Root Mean Squared Error (RMSE): 0.80
 R-squared (R²): 0.51</code></pre>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-5" href="_regression_visual.ipynb.html#linreg_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-5" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#linreg_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>An <span class="math inline">\(R^2\)</span> of <span class="math inline">\(0.51\)</span> means that the model explains about <span class="math inline">\(51\%\)</span> of the variance in the target variable. Since various factors influence house prices, an <span class="math inline">\(R^2\)</span> of <span class="math inline">\(0.51\)</span> indicates a moderate level of explanatory power. The model captures a significant portion of the variability in the target variable.</p>
 <p>Next, we plot predictions by this model with respect to the actual data:</p>
 <div class="quarto-embed-nb-cell">
@@ -430,7 +430,7 @@ R-squared (R²): 0.51</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-6" href="_regression_visual.ipynb.html">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-6" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Since the red dots (predicted data) is close to the green (actual data) line, this model can predict the target variable well.</p>
 </section>
 </section>
@@ -454,7 +454,7 @@ R-squared (R²): 0.51</code></pre>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the target variable to a 1D array</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>y_train_scaled <span class="op">=</span> scaler_y.fit_transform(y_train.values.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).ravel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-7" href="_regression_visual.ipynb.html#svr_scale">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-7" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#svr_scale">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Similar to our prior example, we create the regression model at first:</p>
 <div class="quarto-embed-nb-cell">
 <div id="svr_model" class="cell" data-execution_count="55">
@@ -471,7 +471,7 @@ R-squared (R²): 0.51</code></pre>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Inverse transform the predictions to the original scale</span></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> scaler_y.inverse_transform(y_pred_scaled.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).ravel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-8" href="_regression_visual.ipynb.html#svr_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-8" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#svr_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Then, we utilize the predefined function to evaluate the performance of this nonlinear regression model:</p>
 <div class="quarto-embed-nb-cell">
 <div id="svr_performance" class="cell" data-outputid="9251a349-2c8f-449b-aa6d-c1fd8d441c5a" data-execution_count="56">
@@ -483,7 +483,7 @@ Root Mean Squared Error (RMSE): 0.67
 R-squared (R²): 0.66</code></pre>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-9" href="_regression_visual.ipynb.html#svr_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-9" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#svr_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Here, we can see <span class="math inline">\(R^2\)</span> of <span class="math inline">\(0.66\)</span> which means that the model explains about <span class="math inline">\(66\%\)</span> of the variance in the target variable. So this model performs better than the previous model.</p>
 <p>Next, we plot predictions by this model with respect to the actual data:</p>
 <div class="quarto-embed-nb-cell">
@@ -510,7 +510,7 @@ R-squared (R²): 0.66</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-10" href="_regression_visual.ipynb.html">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-10" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Since the red dots (predicted data) is closer to the green (actual data) line, this model can predict the target variable well.</p>
 </section>
 <section id="random-forest-regressor" class="level3" data-number="3.2">
@@ -529,7 +529,7 @@ R-squared (R²): 0.66</code></pre>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test set</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-11" href="_regression_visual.ipynb.html#rfr_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-11" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#rfr_model">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Then, we use the predefined performance function to evaluate the this nonlinear regression model:</p>
 <div class="quarto-embed-nb-cell">
 <div id="rfr_performance" class="cell" data-outputid="15285565-1667-4d05-cb66-433301026b1f" data-execution_count="59">
@@ -541,7 +541,7 @@ Root Mean Squared Error (RMSE): 0.65
 R-squared (R²): 0.68</code></pre>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-12" href="_regression_visual.ipynb.html#rfr_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-12" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb#rfr_performance">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Here, we can see <span class="math inline">\(R^2\)</span> of <span class="math inline">\(0.68\)</span> which means that the model explains about <span class="math inline">\(0.68\%\)</span> of the variance in the target variable. So this model performs better than the previous models.</p>
 <p>Next, we plot predictions by this model with respect to the actual data:</p>
 <div class="quarto-embed-nb-cell">
@@ -568,7 +568,7 @@ R-squared (R²): 0.68</code></pre>
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-13" href="_regression_visual.ipynb.html">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
+<a class="quarto-notebook-link" id="nblink-13" href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/regression/_regression_visual.ipynb">Source: Linear and Nonlinear Regression with scikit-learn Library</a></div>
 <p>Since the red dots (predicted data) is closer to the green (actual data) line, this model can predict the target variable very well.</p>
 
 

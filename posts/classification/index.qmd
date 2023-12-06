@@ -9,6 +9,7 @@ notebook-view:
   - notebook: _classification_visual.ipynb
     title: "Classification with scikit-learn Library"
     # url: https://colab.research.google.com/drive/1p0rScO2OY9f5UO8qNiHj7b6EiBGE7wcl#scrollTo=a6ajWqcZE6c5
+    url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/classification/_classification_visual.ipynb
 ---
 
 ## Classification in Machine Learning {#sec-listTypes}
