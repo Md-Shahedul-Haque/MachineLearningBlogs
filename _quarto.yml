@@ -4,8 +4,8 @@ project:
 
 website:
   title: "Machine Learning Blogs"
-  repo-url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
-  repo-actions: [source]
+#  repo-url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs
+#  repo-actions: [source]
   navbar:
     right:
       - about.qmd
