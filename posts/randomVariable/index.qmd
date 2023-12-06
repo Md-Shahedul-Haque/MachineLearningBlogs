@@ -1,5 +1,5 @@
 ---
-title: "Random Variable"
+title: "Probability Theory and Random Variable"
 author: "Md Shahedul Haque"
 number-sections: true
 date: "2023-11-23"
@@ -12,7 +12,7 @@ notebook-view:
     url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/randomVariable/_rv_visual.ipynb
 ---
 
-## Probability Theory and Random Variable in Machine Learning
+## Random Variable in Machine Learning
 
 A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually $X$ ) where small letter ($x$) denotes the observed value. For example, $X$ be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space $S$ is:
 
