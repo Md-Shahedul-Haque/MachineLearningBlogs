@@ -1,8 +1,9 @@
 ---
 title: "Clustering"
 author: "Md Shahedul Haque"
+number-sections: true
 date: "2023-11-27"
-categories: [clustering, code, visualization]
+categories: [Clustering, Code, Visualization]
 image: "cluster.png"
 notebook-view:
   - notebook: _cluster_visual.ipynb
@@ -40,7 +41,7 @@ Clustering shapes the intrinsic grouping among the unlabelled data. There are no
 
 -   **Grid-based Methods:** Data space is formulated into a finite number of cells that form. Such as, STING (Statistical Information Grid), WaveCluster, CLIQUE (CLustering In Quest), etc.
 
-## Density Functions Visualization
+## Visualization
 
 ### K-means Clustering
 
@@ -55,8 +56,6 @@ If the user choose number of clusters to be $3$ and relevant features for cluste
 {{< embed _cluster_visual.ipynb#fig-kmc >}}
 
 We can observe the centroid (marked as red circle) of the three clusters from K-means clustering.
-
-### 
 
 ### DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
 

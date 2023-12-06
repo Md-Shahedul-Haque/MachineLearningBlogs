@@ -1,6 +1,6 @@
 ---
 title: "Welcome To My Blog"
-author: "MD S H"
+author: "Md Shahedul Haque (Shawon)"
 date: "2023-9-24"
 categories: [Start]
 ---

@@ -146,9 +146,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-body">
       <h1 class="title">Random Variable</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">random variable</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">visualization</div>
+                <div class="quarto-category">Probability Theory</div>
+                <div class="quarto-category">Random Variable</div>
+                <div class="quarto-category">Code</div>
+                <div class="quarto-category">Visualization</div>
               </div>
                   </div>
   </div>
@@ -186,26 +187,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="random-variable-in-machine-learning" class="level2">
-<h2 class="anchored" data-anchor-id="random-variable-in-machine-learning">Random Variable in Machine Learning</h2>
+<section id="probability-theory-and-random-variable-in-machine-learning" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="probability-theory-and-random-variable-in-machine-learning"><span class="header-section-number">1</span> Probability Theory and Random Variable in Machine Learning</h2>
 <p>A random variable (stochastic variable) is a real valued function from the domain of the sample space of a defined experiment. Generally, a random variable is denoted by capital letter (usually <span class="math inline">\(X\)</span> ) where small letter (<span class="math inline">\(x\)</span>) denotes the observed value. For example, <span class="math inline">\(X\)</span> be the measurement of number of heads observed in an experiment of tossing two coins. Here, the sample space <span class="math inline">\(S\)</span> is:</p>
 <p><span class="math display">\[ S = {(H, H), (H, T), (T, H), (T, T) } \]</span></p>
 <p>This 4 possible outcomes of this experiment constitute the domain of $X$. For each outcome, the random variable is calculates in this way:</p>
 <p><span class="math display">\[  X(H, H) = 2  \]</span>$$ X(H, T) = 1 $$</p>
 <p><span class="math display">\[  X(T, H) = 1 \]</span> $$ X(T, T) = 0 $$</p>
 </section>
-<section id="types-of-random-variable" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-random-variable">Types of Random Variable</h2>
+<section id="types-of-random-variable" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="types-of-random-variable"><span class="header-section-number">2</span> Types of Random Variable</h2>
 <p>In broader way, there are two categories of random variable:</p>
 <ol type="1">
 <li><p>Discrete Random Variable: Range of the observable value is a finite set. For instance, in the previous two coins tossing <span class="math inline">\(X\)</span> is a discrete random variable with observable values <span class="math inline">\(\{0, 1, 2\}\)</span> .</p></li>
 <li><p>Continuous Random Variable: Range of the observable value has some interval, bounded or unbounded. For instance, weight of different people in a class.</p></li>
 </ol>
 </section>
-<section id="density-functions" class="level2">
-<h2 class="anchored" data-anchor-id="density-functions">Density Functions</h2>
-<section id="probability-mass-function-pmf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-mass-function-pmf"><strong>Probability Mass Function</strong> <strong>(PMF)</strong></h3>
+<section id="density-functions" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="density-functions"><span class="header-section-number">3</span> Density Functions</h2>
+<section id="probability-mass-function-pmf" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="probability-mass-function-pmf"><span class="header-section-number">3.1</span> <strong>Probability Mass Function</strong> <strong>(PMF)</strong></h3>
 <p>The probability mass function (PMF) a discrete random variable is the likelihood that the variable takes on a given value. Mathematically,<br>
 <span class="math display">\[  f(x) = P(X = x) \]</span></p>
 <p>which follows the following properties:</p>
@@ -244,8 +245,8 @@ $S$ } \]</span><br>
 </div>
 <a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Random Variable with Scipy Library</a></div>
 </section>
-<section id="probability-density-function-pdf" class="level3">
-<h3 class="anchored" data-anchor-id="probability-density-function-pdf"><strong>Probability Density Function</strong> <strong>(PDF)</strong></h3>
+<section id="probability-density-function-pdf" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="probability-density-function-pdf"><span class="header-section-number">3.2</span> <strong>Probability Density Function</strong> <strong>(PDF)</strong></h3>
 <p>The probability density function (PDF) of a continuous random variable is the likelihood that the variable lies on a given range. Mathematically,<br>
 <span class="math display">\[ \int_{a}^{b} f(x)dx = P(a&lt; X &lt;b) \mbox{ for any $a, b$ \(\epsilon\) $S$ satisfying a &lt; b }\]</span></p>
 <p>which follows the following properties:</p>
@@ -283,8 +284,8 @@ $S$ } \]</span></p>
 </div>
 <a class="quarto-notebook-link" id="nblink-4" href="https://colab.research.google.com/drive/1-9rDrxgVgGw9JspIUhjT79ANonsbJrPp">Source: Random Variable with Scipy Library</a></div>
 </section>
-<section id="cumulative-distribution-function-cdf" class="level3">
-<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><strong>Cumulative Distribution Function</strong> <strong>(CDF)</strong></h3>
+<section id="cumulative-distribution-function-cdf" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="cumulative-distribution-function-cdf"><span class="header-section-number">3.3</span> <strong>Cumulative Distribution Function</strong> <strong>(CDF)</strong></h3>
 <p>The cumulative distribution function (CDF) of a random variable is the likelihood that the variable is bounded within a given value. Mathematically,</p>
 <p><span class="math display">\[ F(x) = \sum_{z \epsilon S, z \leq x } f(z) \mbox{ for discrete random variables }\]</span><br>
 <span class="math display">\[ F(x) = \int_{- \infty}^{x} f(z)dz  \mbox{ for continuous random variables }\]</span></p>

@@ -146,9 +146,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-body">
       <h1 class="title">Clustering</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">clustering</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">visualization</div>
+                <div class="quarto-category">Clustering</div>
+                <div class="quarto-category">Code</div>
+                <div class="quarto-category">Visualization</div>
               </div>
                   </div>
   </div>
@@ -186,8 +186,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="clustering-in-machine-learning" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-in-machine-learning">Clustering in Machine Learning</h2>
+<section id="clustering-in-machine-learning" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="clustering-in-machine-learning"><span class="header-section-number">1</span> Clustering in Machine Learning</h2>
 <p>Broadly there are three types of learning methods in ML:</p>
 <ol type="1">
 <li><p>Supervised learning method: Label for corresponding datapoint is available.</p></li>
@@ -196,8 +196,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Clustering belongs to the category of unsupervised learning method. Generally, it is utilized as a process for finding meaningful structure, explanatory underlying processes, generative features, and groupings inherent in a set of examples. Clustering&nbsp;is the task of dividing the population or data points into a number of disjoint sets such that data points in the same sets are more similar to other data points in the same set and dissimilar to the data points in other sets. Consequently, clustering forms a collection of objects on the basis of similarity and dissimilarity between them.&nbsp;</p>
 </section>
-<section id="clustering-methods" class="level2">
-<h2 class="anchored" data-anchor-id="clustering-methods">Clustering methods</h2>
+<section id="clustering-methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="clustering-methods"><span class="header-section-number">2</span> Clustering methods</h2>
 <p>Clustering shapes the intrinsic grouping among the unlabelled data. There are no standard for good clustering. It depends on the user, and what criteria they may use which satisfy their need. Based on the assumptions and goal of the task, clustering algorithms can be divided into several categories:&nbsp;</p>
 <ul>
 <li><p><strong>Density-Based Methods:</strong> Dense region has some similarities and is different from the lower dense region. For example, DBSCAN (Density-Based Spatial Clustering of Applications with Noise), OPTICS (Ordering Points to Identify Clustering Structure), etc.</p></li>
@@ -211,10 +211,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Grid-based Methods:</strong> Data space is formulated into a finite number of cells that form. Such as, STING (Statistical Information Grid), WaveCluster, CLIQUE (CLustering In Quest), etc.</p></li>
 </ul>
 </section>
-<section id="density-functions-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="density-functions-visualization">Density Functions Visualization</h2>
-<section id="k-means-clustering" class="level3">
-<h3 class="anchored" data-anchor-id="k-means-clustering">K-means Clustering</h3>
+<section id="visualization" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="visualization"><span class="header-section-number">3</span> Visualization</h2>
+<section id="k-means-clustering" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="k-means-clustering"><span class="header-section-number">3.1</span> K-means Clustering</h3>
 <p>It is the simplest clustering algorithm. It partitions given <span class="math inline">\(n\)</span> observations into predefined <span class="math inline">\(k\)</span> clusters. The basis for such clustering is the nearest mean from the <span class="math inline">\(k\)</span> centroids. Clusters formed in K-Means are spherical or convex in shape.</p>
 <p>Code snippet for K-means clustering on the Palmer Penguins dataset:</p>
 <div class="quarto-embed-nb-cell">
@@ -271,11 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="quarto-notebook-link" id="nblink-2" href="https://colab.research.google.com/drive/1vjOGlh6ETKQdU_5ZYvwv6UrEZ8Rgshb9#scrollTo=VBhXxpLoE6c6">Source: Clustering with scikit-learn Library</a></div>
 <p>We can observe the centroid (marked as red circle) of the three clusters from K-means clustering.</p>
 </section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-</section>
-<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level3">
-<h3 class="anchored" data-anchor-id="dbscan-density-based-spatial-clustering-of-applications-with-noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</h3>
+<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="dbscan-density-based-spatial-clustering-of-applications-with-noise"><span class="header-section-number">3.2</span> DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</h3>
 <p>Partitioning methods (K-means, PAM clustering) and hierarchical clustering focus on finding spherical-shaped clusters or convex clusters. As a result, they are suitable only for compact and well-separated clusters. Moreover, their performance deteriorate with the presence of noise and outliers in the data. DBSCAN can handle dataset containing non-convex shape clusters and outliers. The basis for this clustering are the maximum distance between two samples for them to be considered neighbors and the minimum number of samples in a neighborhood within that radius.</p>
 <p>Code snippet for DBSCAN on the Palmer Penguins dataset:</p>
 <div class="quarto-embed-nb-cell">

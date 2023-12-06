@@ -1,0 +1,184 @@
+---
+title: "Linear and Nonlinear Regression"
+number-sections: true
+author: "Md Shahedul Haque"
+date: "2023-11-29"
+categories: [Linear Regression, Nonlinear Regression, Code, Visualization]
+image: "regression.png"
+notebook-view:
+  - notebook: _regression_visual.ipynb
+    title: "Linear and Nonlinear Regression with scikit-learn Library"
+    url: https://colab.research.google.com/drive/196SAQVmUmIH0K-6PqxwuliTGEdAjcexd#scrollTo=2CxyvQ57BVTD
+---
+
+## Regression in Machine Learning  {#sec-listTypes}
+
+Supervised machine learning is a type of machine learning where the algorithm learns from labelled data. Labeled data means the dataset whose respective target value is already known. Depending on the output of models, we can divide Supervised machine learning models into two categories:
+
+1.  **Regression:** It predicts the continuous output variables based on the independent input variable. Such as, the prediction of house prices based on different parameters like house age, distance from the main road, location, area, etc.
+
+2.  **Classification:** It predicts the class/category of a datapoint based on the independent input variable. Here, outcome is a categorical or discrete value. For example, given image of an animal is a cat or dog.
+
+Regression computes the relationship between the dependent variables or criterion variables and one or more independent variables or predictors.  
+
+Several types of regression techniques are available. Each of them are suited for different types of data and different types of relationships. The main types of regression techniques are:
+
+1.  Linear Regression
+
+2.  Polynomial Regression
+
+3.  Stepwise Regression
+
+4.  Decision Tree Regression
+
+5.  Random Forest Regression
+
+6.  Support Vector Regression
+
+7.  Ridge Regression
+
+8.  Lasso Regression
+
+9.  ElasticNet Regression
+
+10. Bayesian Linear Regression
+
+## Linear Regression
+
+Linear regression is used for predictive analysis. It is a linear approach for modeling the relationship between the criterion or the scalar response and the multiple predictors or explanatory variables. Linear regression focuses on the conditional probability distribution of the response given the values of the predictors.
+
+### Formula for Linear Regression Model
+
+The simplest form of linear regression involved only one independent variable and one dependent variable. The equation for simple linear regression is:
+
+$$
+y=\theta x+b
+$$
+
+where,
+
+-   $y$ is the dependent variable
+
+-   $x$ is the independent variable
+
+-   $\theta$ is the model weights or parameters
+
+-   $b$ is the bias
+
+Multiple Linear Regression involves more than one independent variable and one dependent variable. The equation for multiple linear regression is:
+
+$$
+y=b+\theta_1 x_1+\theta_2 x_2+\theta_3 x_3+...+\theta_n x_n
+$$
+
+where,
+
+-   $y$ is the dependent variable
+
+-   $x_1, x_2, x_3, ..., x_n$ are the independent variables
+
+-   $\theta_1, \theta_2, ..., \theta_n$ are the model weights or parameters
+
+-   $b$ is the bias
+
+### Assumption for Linear Regression Model
+
+A linear regression model needs to meet a few conditions in order to be accurate and dependable solutions:
+
+-   **Linearity:** Linear relation between independent and dependent variable
+
+-   **Independence:** Observations in the dataset are independent of each other.
+
+-   **Homoscedasticity:** Amount of the independent variable(s) has no impact on the variance of the errors
+
+-   **Normality:** The residuals should be normally distributed
+
+-   **No Multicollinearity:** No high correlation between the independent variables.
+
+### California Housing dataset
+
+We will be using [California Housing dataset](https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html) for visualizing regression models. This dataset was derived from the 1990 U.S. census, using one row per census block group. Code snippet for loading this dataset and checking its description:
+
+{{< embed _regression_visual.ipynb#load_dataset echo=true >}}
+
+Next, we choose some features as independent features such as, median income in block group, median house age, average number of rooms and bedrooms per household, average number of household members and block group population. In this case, our target (dependent) variable is median value of the house (in units of $100,000$). Also we split the $20640$ records for train and test following $80-20$ ratio:
+
+{{< embed _regression_visual.ipynb#feature echo=true >}}
+
+### Visualization for Linear Regression Model
+
+For a simple linear regression model, we utilize the scikit-learn machine library through these three. generic steps:
+
+1.  Creating the desired model
+
+2.  Train the model on processed training set
+
+3.  Making predictions on the test set and evaluating it
+
+Code snippet for a linear regression model:
+
+{{< embed _regression_visual.ipynb#linReg_model echo=true >}}
+
+We create a generic function which takes prediction label and actual label for evaluating the performance of our model. Code snippet for this function:
+
+{{< embed _regression_visual.ipynb#performance echo=true >}}
+
+Later, we utilize this function to evaluate the performance of our linear regression model:
+
+{{< embed _regression_visual.ipynb#linReg_performance echo=true >}}
+
+An $R^2$ of $0.51$ means that the model explains about $51\%$ of the variance in the target variable. Since various factors influence house prices, an $R^2$ of $0.51$ indicates a moderate level of explanatory power. The model captures a significant portion of the variability in the target variable.
+
+Next, we plot predictions by this model with respect to the actual data:
+
+{{< embed _regression_visual.ipynb#fig-linReg echo=true >}}
+
+Since the red dots (predicted data) is close to the green (actual data) line, this model can predict the target variable well.
+
+## Nonlinear Regression
+
+Nonlinear regression is a statistical technique which assists in describing the non linearity in relationship between independent and dependent variables. Nonlinear regression models are described with a nonlinear equation. Typically, nonlinear regression is well suited to explain relations between variables in real life data. There are a lot of nonlinear regression models, refer to the previously mentioned list of regression techniques in section @sec-listTypes if needed. In the scope of this blog, we confine our discussions to two types of nonlinear regression.
+
+### Support Vector Regressor (SVR) 
+
+Support vector regression (SVR) is a type of support vector machine (SVM) that is used for regression tasks. It attempts to find a function that best predicts the continuous output value of target for given input values of independent variables. SVR can have both linear and non-linear kernels. We will be using a radial basis function (RBF) kernel which is a non linear one.
+
+Code snippet for scaling the values of feature so that features with higher values can not dominate the lower value ones. Feature scaling is a must for SVR to speed up convergence and improve model performance. Also we scale the target values accordingly:
+
+{{< embed _regression_visual.ipynb#svr_scale echo=true >}}
+
+Similar to our prior example, we create the regression model at first:
+
+{{< embed _regression_visual.ipynb#svr_model echo=true >}}
+
+Then, we utilize the predefined function to evaluate the performance of this nonlinear regression model:
+
+{{< embed _regression_visual.ipynb#svr_performance echo=true >}}
+
+Here, we can see $R^2$ of $0.66$ which means that the model explains about $66\%$ of the variance in the target variable. So this model performs better than the previous model.
+
+Next, we plot predictions by this model with respect to the actual data:
+
+{{< embed _regression_visual.ipynb#fig-svr echo=true >}}
+
+Since the red dots (predicted data) is closer to the green (actual data) line, this model can predict the target variable well.
+
+### Random Forest Regressor
+
+Random Forest Regression is a versatile technique for predicting numerical values. To reduce overfitting and improve overall accuracy, It combines the predictions of multiple decision trees.
+
+Similar to our previous example, we create the regression model at first:
+
+{{< embed _regression_visual.ipynb#rfr_model echo=true >}}
+
+Then, we use the predefined performance function to evaluate the this nonlinear regression model:
+
+{{< embed _regression_visual.ipynb#rfr_performance echo=true >}}
+
+Here, we can see $R^2$ of $0.68$ which means that the model explains about $0.68\%$ of the variance in the target variable. So this model performs better than the previous models.
+
+Next, we plot predictions by this model with respect to the actual data:
+
+{{< embed _regression_visual.ipynb#fig-rfr echo=true >}}
+
+Since the red dots (predicted data) is closer to the green (actual data) line, this model can predict the target variable very well.
