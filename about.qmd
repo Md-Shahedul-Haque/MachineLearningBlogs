@@ -8,6 +8,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/md-shahedul-haque-shawon-5023491b7/
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/shahedul_shawon
     - icon: github
       text: Github
       href: https://github.com/Md-Shahedul-Haque

@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/shahedul_shawon" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Classification</h1>
+      <div class="quarto-title-block"><div><h1 class="title">Classification</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Classification</div>
                 <div class="quarto-category">Code</div>
@@ -239,8 +239,8 @@ Recall = \frac{\mbox{True positives}}{\mbox{Total number of actual positives}}
 F1-Score = \frac{2 *\mbox{precision} * \mbox{recall}}{\mbox{precision + recall}}
 \]</span></p>
 <p>It is also a useful metric for imbalanced datasets where both precision and recall are important.</p></li>
-<li><p><strong>ROC curve and AUC:</strong> The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier's decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).</p></li>
-<li><p><strong>Cross-validation:</strong> A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model's performance.</p></li>
+<li><p><strong>ROC curve and AUC:</strong> The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier’s decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).</p></li>
+<li><p><strong>Cross-validation:</strong> A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model’s performance.</p></li>
 </ul>
 </section>
 <section id="visualization" class="level2" data-number="4">
@@ -361,7 +361,7 @@ latter are NOT linearly separable from each other.
 </section>
 <section id="naive-bayes-classifier" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="naive-bayes-classifier"><span class="header-section-number">4.3</span> Naive Bayes Classifier</h3>
-<p>Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome</p>
+<p>Naive Bayes classifiers are a collection of classification algorithms based on Bayes’ Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome</p>
 <p>Code snippet for creating a gaussian naive bayes classifier model:</p>
 <div class="quarto-embed-nb-cell">
 <div id="nb_model" class="cell">
@@ -487,6 +487,8 @@ Naive Bayes    1.000000        1.0     1.0       1.0</code></pre>
 <p>As we can predict, Decision Tree and Naive Bayes perform the best. But Support Vector Machine makes a mistake while predicting a sample “veriscolor” class (mistook it as “virginica” class).</p>
 
 
+<!-- -->
+
 </section>
 </section>
 
@@ -570,6 +572,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -723,9 +776,137 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Classification"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Md Shahedul Haque"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-12-02"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Classification, Code, Visualization]</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "classification.png"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="an">notebook-view:</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - notebook: _classification_visual.ipynb</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">    title: "Classification with scikit-learn Library"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    # url: https://colab.research.google.com/drive/1p0rScO2OY9f5UO8qNiHj7b6EiBGE7wcl#scrollTo=a6ajWqcZE6c5</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">    url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/classification/_classification_visual.ipynb</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Classification in Machine Learning {#sec-listTypes}</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Supervised machine learning is a type of machine learning where the algorithm learns from labelled data. Labeled data means the dataset whose respective target value is already known. Depending on the output of models, we can divide Supervised machine learning models into two categories:</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Regression:** It predicts the continuous output variables based on the independent input variable. Such as, the prediction of house prices based on different parameters like house age, distance from the main road, location, area, etc.</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Classification:** It predicts the class/category of a datapoint based on the independent input variable. Here, outcome is a categorical or discrete value. For example, given image of an animal is a cat or dog.</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>Classification is a method for categorizing data or objects into predefined classes or categories based on their features or attributes. Even though classification comprises a small part of Machine Learning as a whole, it is one of the most important ones.&nbsp;</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Types of Classification</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>Classification algorithms are of two types:&nbsp;&nbsp;</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Binary Classification**: Classifies the input into one of two classes. Example -- on the basis of the given medical image of a person, the model determine whether the person has a certain disease or not.</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Multiclass Classification**: Classifies the input into one of several classes or categories. For instance, given an image the model categorize which type of dress it is.</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>Depending on the nature of relationship (linear or nonlinear) between independent and dependent variables, classification can be considered two types:</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Linear Classifications:** Logistic Regression, Support Vector Machine (with kernel = 'linear'), Single-layer Perceptron, Stochastic Gradient Descent (SGD) Classifier</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Non-linear Classifications:** K-Nearest Neighbours, Support Vector Machine, Naive Bayes, Decision Tree Classifier, Ensemble learning Classifier (Random Forests, Adaboost, Bagging Classifier, Voting Classifier, ExtraTrees Classifier), Multi-layer Artificial Neural Networks</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>On the basis of learners, classification can be divided into two types:</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Lazy Learners**: They are instance-based learners since they do not learn a model during the training phase. Instead, they simply store the training data and use it to classify new instances at prediction time. As a result, It is very fast at prediction time because it does not require computations during the predictions. On the other hand, it is less effective in high-dimensional spaces or when the number of training instances is large. Examples include k-nearest neighbors and case-based reasoning.</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Eager Learners**:They are model-based learners as they learn a model from the training data during the training phase and use this model to classify new instances at prediction time. Consequently, it is slower at prediction time but it is more effective in high-dimensional spaces having large training datasets. Examples of eager learners include decision trees, random forests, and support vector machines.</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Evaluation Metrics</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>Depending on the specific problem and requirements, we have to choose among several metrics and techniques to evaluate a classification model. Some commonly used evaluation metrics are:</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Accuracy:** This simple and intuitive metric can be misleading in imbalanced datasets where the majority class dominates the accuracy score.</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    Accuracy = \frac{\mbox{Correctly classified instances}}{\mbox{Total instances}}</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Confusion matrix:** A table that shows the number of true positives, true negatives, false positives, and false negatives for each class.</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Precision and Recall:** These metrics are useful in scenarios where there is a trade-off between false positives and false negatives, or when one class is more important than the other.</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    Precision = \frac{\mbox{True positives}}{\mbox{Total number of predicted positives}}</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>    Recall = \frac{\mbox{True positives}}{\mbox{Total number of actual positives}}</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**F1-Score:** The harmonic mean of precision and recall, calculated as</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>    F1-Score = \frac{2 *\mbox{precision} * \mbox{recall}}{\mbox{precision + recall}}</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    It is also a useful metric for imbalanced datasets where both precision and recall are important.</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**ROC curve and AUC:** The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier's decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cross-validation:** A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model's performance.</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualization</span></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>To understand how classification models works, we study three classifiers and compare their performance a standard data set, the Iris data set.&nbsp;</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Iris Dataset</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>We will be using <span class="co">[</span><span class="ot">Iris Dataset</span><span class="co">](https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1469-1809.1936.tb02137.x)</span> for visualizing classifier models. This dataset was first used by Sir R.A. Fisher in his paper. This is perhaps the best known database to be found in the pattern recognition literature. The data set contains three classes of $50$ instances each, where each class refers to a type of iris plant. One class is linearly separable from the other two; the latter are **not** linearly separable from each other. Features in this dataset are sepal length, sepal width, petal length, petal width in cm. Target variable can be of these three categories: Setosa, Versicolour, Virginica (represented by $0, 1, 2$ respectively in the dataset).</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>Code snippet for loading this dataset and checking its description:</span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#load_dataset echo=true &gt;}}</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>Also we split the $50$ records for train and test following $80-20$ ratio</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### Support Vector Machine</span></span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>Support Vector Machine (SVM) is mostly used for linear or nonlinear classification. But its application is also observed in regression problems, and even outlier detection tasks. SVM algorithms are very effective as they try to find the maximum separating hyperplane between the different classes available in the target feature.</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>We utilize the scikit-learn machine library to create our SVM model with linear kernel. Before training we perform feature scaling which is a must for SVM to speed up convergence and improve model performance. Code snippet for this is:</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#svm_model echo=true &gt;}}</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Naive Bayes Classifier</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>Code snippet for creating a gaussian naive bayes classifier model:</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#nb_model echo=true &gt;}}</span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="fu">### Decision Tree Classifier</span></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>Decision tree is a versatile supervised learning algorithms used for both classification and regression tasks. It consists of a flowchart-like tree structure. Here, each internal node denotes a test on an attribute, each branch represents an outcome of the test. Each leaf node (terminal node) holds a class label. During training, it is constructed by recursively splitting the training data into subsets based on the values of the attributes until a stopping criterion is met, such as the maximum depth of the tree or the minimum number of samples required to split a node.</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>Code snippet for creating a decision tree classifier model:</span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#dtc_model echo=true &gt;}}</span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### Performance Evaluation</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>Later, we evaluate the performance of the models:</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#performance echo=true &gt;}}</span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>Since, the dataset is too small, performance of the models are pretty close except Support Vector Machine. To understand better, we take a closer at the predictions made by the models though confusion matrix:</span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>{{&lt; embed _classification_visual.ipynb#conf_matrix echo=true &gt;}}</span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>As we can predict, Decision Tree and Naive Bayes perform the best. But Support Vector Machine makes a mistake while predicting a sample "veriscolor" class (mistook it as "virginica" class).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/classification/index.qmd" class="toc-action">View source</a></p></div></div></div></div></footer></body></html>

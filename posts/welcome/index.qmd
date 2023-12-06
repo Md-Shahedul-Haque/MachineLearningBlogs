@@ -5,4 +5,18 @@ date: "2023-9-24"
 categories: [First Blog, Quarto]
 ---
 
-This is my first post in a Quarto blog. Welcome!
+This is my first post in a Quarto blog. Posts on this blog are part of my graduate course on Machine Learning (CS 5805).
+
+Posts are on :
+
+1.  Probabilistic Theory and Random Variable
+
+2.  Clustering
+
+3.  Linear and Nonlinear Regression
+
+4.  Classification
+
+5.  Anomaly / Outlier Detection
+
+Welcome!
