@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.3.450">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Md Shahedul Haque">
-<meta name="dcterms.date" content="2023-11-27">
-
-<title>Machine Learning Blogs - Clustering</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+    <title>Machine Learning Blogs - Clustering Visualization</title>    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+    <style>
+      .quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+      .quarto-embed-header h6 {
+        font-size: 1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 300;
+      }
+      .quarto-embed-header a.quarto-download-embed {
+        font-size: 0.7em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    </style>
+    
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -75,7 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+     <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -94,17 +113,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../../styles.css">
-</head>
-
-<body class="nav-fixed">
-
-<div id="quarto-search-results"></div>
+}</script>  
+        <link rel="stylesheet" href="../../styles.css">
+      </head>
+  <body class="nav-fixed quarto-notebook fullcontent">
+    <div class="quarto-embed-header">
+      <h6><i class="bi bi-journal-code"></i> Clustering with scikit-learn Library</h6>
+      <a href="../../posts/clustering/_cluster_visual.ipynb" class="btn btn-primary quarto-download-embed" download="_cluster_visual.ipynb">Download Notebook</a>
+    </div>
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
@@ -149,31 +166,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Clustering</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Clustering</div>
-                <div class="quarto-category">Code</div>
-                <div class="quarto-category">Visualization</div>
-              </div>
-                  </div>
+      <h1 class="title">Clustering Visualization</h1>
+                      </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Md Shahedul Haque </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 27, 2023</p>
-      </div>
-    </div>
     
       
     </div>
@@ -182,48 +182,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="_cluster_visual.ipynb.html"><i class="bi bi-journal-code"></i>Clustering with scikit-learn Library</a></li></ul></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="clustering-in-machine-learning" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="clustering-in-machine-learning"><span class="header-section-number">1</span> Clustering in Machine Learning</h2>
-<p>Broadly there are three types of learning methods in ML:</p>
-<ol type="1">
-<li><p>Supervised learning method: Label for corresponding datapoint is available.</p></li>
-<li><p>Unsupervised learning method: Label for corresponding datapoint is unavailable.</p></li>
-<li><p>Semisupervised learning method: Lable is available only for a small portion of all the datapoints, most of the datapoints lack label.</p></li>
-</ol>
-<p>Clustering belongs to the category of unsupervised learning method. Generally, it is utilized as a process for finding meaningful structure, explanatory underlying processes, generative features, and groupings inherent in a set of examples. Clustering&nbsp;is the task of dividing the population or data points into a number of disjoint sets such that data points in the same sets are more similar to other data points in the same set and dissimilar to the data points in other sets. Consequently, clustering forms a collection of objects on the basis of similarity and dissimilarity between them.&nbsp;</p>
-</section>
-<section id="clustering-methods" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="clustering-methods"><span class="header-section-number">2</span> Clustering methods</h2>
-<p>Clustering shapes the intrinsic grouping among the unlabelled data. There are no standard for good clustering. It depends on the user, and what criteria they may use which satisfy their need. Based on the assumptions and goal of the task, clustering algorithms can be divided into several categories:&nbsp;</p>
-<ul>
-<li><p><strong>Density-Based Methods:</strong> Dense region has some similarities and is different from the lower dense region. For example, DBSCAN (Density-Based Spatial Clustering of Applications with Noise), OPTICS (Ordering Points to Identify Clustering Structure), etc.</p></li>
-<li><p><strong>Hierarchical Based Methods:</strong> Forms a tree-type structure based on the hierarchy. Later, new clusters are formed using the previously formed one. It is further divided into two categories:</p>
-<ul>
-<li><p>Agglomerative (bottom-up approach)</p></li>
-<li><p>Divisive (top-down approach)</p>
-<p>Examples include CURE (Clustering Using Representatives), BIRCH (Balanced Iterative Reducing Clustering and using Hierarchies), etc.</p></li>
-</ul></li>
-<li><p><strong>Partitioning Methods:</strong> Partitions the datapoints into <span class="math inline">\(k\)</span> clusters and each partition forms one cluster. Focus is optimizing an objective criterion similarity function. For instance, K-means, CLARANS (Clustering Large Applications based upon Randomized Search), etc.</p></li>
-<li><p><strong>Grid-based Methods:</strong> Data space is formulated into a finite number of cells that form. Such as, STING (Statistical Information Grid), WaveCluster, CLIQUE (CLustering In Quest), etc.</p></li>
-</ul>
-</section>
-<section id="visualization" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="visualization"><span class="header-section-number">3</span> Visualization</h2>
-<section id="k-means-clustering" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="k-means-clustering"><span class="header-section-number">3.1</span> K-means Clustering</h3>
-<p>It is the simplest clustering algorithm. It partitions given <span class="math inline">\(n\)</span> observations into predefined <span class="math inline">\(k\)</span> clusters. The basis for such clustering is the nearest mean from the <span class="math inline">\(k\)</span> centroids. Clusters formed in K-Means are spherical or convex in shape.</p>
-<p>Code snippet for K-means clustering on the Palmer Penguins dataset:</p>
-<div class="quarto-embed-nb-cell">
-<div id="kmc" class="cell" data-outputid="269aac80-eb18-4f5b-c20d-011c1b245f9a" data-execution_count="10">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">      
+   <section id="k-means-clustering" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="k-means-clustering">K-means Clustering</h2>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="kmc" class="cell" data-outputid="269aac80-eb18-4f5b-c20d-011c1b245f9a" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -259,69 +223,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3          NaN     NaN  2007  
 4       3450.0  female  2007  </code></pre>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="_cluster_visual.ipynb.html#kmc">Source: Clustering with scikit-learn Library</a></div>
-<p>If the user choose number of clusters to be <span class="math inline">\(3\)</span> and relevant features for clustering are <em>Flipper Length (mm)</em> and <em>Body Mass (g),</em> we can observe the following clustering:</p>
-<div class="quarto-embed-nb-cell">
-<div class="cell" data-outputid="10e34918-d20d-4fc6-86a4-e1d898a980d5" data-execution_count="19">
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [19]:</pre></div><div class="cell" data-outputid="10e34918-d20d-4fc6-86a4-e1d898a980d5" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the clusters</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(penguins[<span class="st">'flipper_length_mm'</span>], penguins[<span class="st">'body_mass_g'</span>], c<span class="op">=</span>penguins[<span class="st">'Cluster'</span>], cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(kmeans.cluster_centers_[:, <span class="dv">0</span>], kmeans.cluster_centers_[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">100</span>, c<span class="op">=</span><span class="st">'red'</span>, marker<span class="op">=</span><span class="st">'o'</span>, label<span class="op">=</span><span class="st">'Centroids'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Flipper Length (mm)'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Body Mass (g)'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'K-means Clustering of Penguins'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-kmc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-kmc-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="_cluster_visual_files/figure-html/fig-kmc-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: K-means clustering on the Palmer Penguins dataset</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-2" href="_cluster_visual.ipynb.html">Source: Clustering with scikit-learn Library</a></div>
-<p>We can observe the centroid (marked as red circle) of the three clusters from K-means clustering.</p>
+</div></div>
 </section>
-<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="dbscan-density-based-spatial-clustering-of-applications-with-noise"><span class="header-section-number">3.2</span> DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</h3>
-<p>Partitioning methods (K-means, PAM clustering) and hierarchical clustering focus on finding spherical-shaped clusters or convex clusters. As a result, they are suitable only for compact and well-separated clusters. Moreover, their performance deteriorate with the presence of noise and outliers in the data. DBSCAN can handle dataset containing non-convex shape clusters and outliers. The basis for this clustering are the maximum distance between two samples for them to be considered neighbors and the minimum number of samples in a neighborhood within that radius.</p>
-<p>Code snippet for DBSCAN on the Palmer Penguins dataset:</p>
-<div class="quarto-embed-nb-cell">
-<div id="dbscan" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins.dropna()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features for clustering (e.g., flipper length and body mass)</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins[[<span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]]</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform DBSCAN clustering</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust eps and min_samples based on data</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="dv">75</span>, min_samples<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>penguins.loc[:, <span class="st">'Cluster'</span>] <span class="op">=</span> dbscan.fit_predict(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<a class="quarto-notebook-link" id="nblink-3" href="_cluster_visual.ipynb.html#dbscan">Source: Clustering with scikit-learn Library</a></div>
-<p>If the user choose the maximum distance between two samples to be <span class="math inline">\(75\)</span>, the minimum number of samples in a neighborhood within that radius to be <span class="math inline">\(15\)</span> and relevant features for clustering are <em>Flipper Length (mm)</em> and <em>Body Mass (g)</em>, we can observe the following clustering:</p>
-<div class="quarto-embed-nb-cell">
-<div class="cell" data-outputid="21c98c8c-2706-4f60-a286-af3d3852c304" data-execution_count="56">
+<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="dbscan-density-based-spatial-clustering-of-applications-with-noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</h2>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [55]:</pre></div><div id="dbscan" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://pos.it/palmer-penguins-github-csv"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins.dropna()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant features for clustering (e.g., flipper length and body mass)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins[[<span class="st">'flipper_length_mm'</span>, <span class="st">'body_mass_g'</span>]]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform DBSCAN clustering</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust eps and min_samples based on data</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="dv">75</span>, min_samples<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>penguins.loc[:, <span class="st">'Cluster'</span>] <span class="op">=</span> dbscan.fit_predict(features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [56]:</pre></div><div class="cell" data-outputid="21c98c8c-2706-4f60-a286-af3d3852c304" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the clusters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> plt.scatter(penguins[<span class="st">'flipper_length_mm'</span>], penguins[<span class="st">'body_mass_g'</span>], c<span class="op">=</span>penguins[<span class="st">'Cluster'</span>], cmap<span class="op">=</span><span class="st">'viridis'</span> , label<span class="op">=</span><span class="st">'Data Points'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend for the data points</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.legend(<span class="op">*</span>scatter.legend_elements(), title<span class="op">=</span><span class="st">'Clusters'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Flipper Length (mm)'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Body Mass (g)'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'DBSCAN of Penguins'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dbscan" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-dbscan-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="_cluster_visual_files/figure-html/fig-dbscan-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: DBSCAN on the Palmer Penguins dataset</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-4" href="_cluster_visual.ipynb.html">Source: Clustering with scikit-learn Library</a></div>
-<p>Even though it got us three clusters, this one is quite different from the previous one we got from K-means clustering. This clustering provides irregular shape other than the spherical-shaped clusters or convex clusters.</p>
+</div></div>
 
 
 </section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -553,9 +519,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
-
-
+</script>  </div> <!-- /content --> 
+  
 
 </body></html>

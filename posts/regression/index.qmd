@@ -8,7 +8,7 @@ image: "regression.png"
 notebook-view:
   - notebook: _regression_visual.ipynb
     title: "Linear and Nonlinear Regression with scikit-learn Library"
-    url: https://colab.research.google.com/drive/196SAQVmUmIH0K-6PqxwuliTGEdAjcexd#scrollTo=2CxyvQ57BVTD
+    # url: https://colab.research.google.com/drive/196SAQVmUmIH0K-6PqxwuliTGEdAjcexd#scrollTo=2CxyvQ57BVTD
 ---
 
 ## Regression in Machine Learning  {#sec-listTypes}
