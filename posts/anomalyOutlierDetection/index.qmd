@@ -1,0 +1,137 @@
+---
+title: "Anomaly and Outlier Detection"
+number-sections: true
+author: "Md Shahedul Haque"
+date: "2023-12-06"
+categories: [Anomaly, Outlier, Detection, Code, Visualization]
+image: "outlier.png"
+notebook-view:
+  - notebook: _anomaly_outlier_detection.ipynb
+    title: "Anomaly and outlier detection with scikit-learn Library"
+    # url: https://colab.research.google.com/drive/1p0rScO2OY9f5UO8qNiHj7b6EiBGE7wcl#scrollTo=a6ajWqcZE6c5
+    url: https://github.com/Md-Shahedul-Haque/MachineLearningBlogs/blob/main/posts/anomalyOutlierDetection/_anomaly_outlier_detection.ipynb
+---
+
+## Anomaly and Outlier Detection in Machine Learning {#sec-listTypes}
+
+Anomaly Detection is the technique for the identification of rare events or observations that raise suspicions by being statistically different from the rest of the observations. Such \"outliers\" typically translates to some kind of a problem like a credit card fraud, failing machine in a server, an intrusion, a cyber attack, etc. An anomaly can be broadly categorized into three categories:
+
+1.  **Point Anomaly**
+
+2.  **Contextual Anomaly**
+
+3.  **Collective Anomaly**
+
+We can perform anomaly detection in both supervised (Support Vector Machine, KNN, etc) and unsupervised (Clustering) ways.
+
+## Evaluation Metrics
+
+We can utilize the evaluation metrics we discussed for classification models to evaluate the performance of the anomaly detector at hand:
+
+-   **Accuracy:** This simple and intuitive metric can be misleading in imbalanced datasets where the majority class dominates the accuracy score.
+
+    $$
+    Accuracy = \frac{\mbox{Correctly classified instances}}{\mbox{Total instances}}
+    $$
+
+-   **Confusion matrix:** A table that shows the number of true positives, true negatives, false positives, and false negatives for each class.
+
+-   **Precision and Recall:** These metrics are useful in scenarios where there is a trade-off between false positives and false negatives, or when one class is more important than the other.
+
+    $$
+    Precision = \frac{\mbox{True positives}}{\mbox{Total number of predicted positives}}
+    $$
+
+    $$
+    Recall = \frac{\mbox{True positives}}{\mbox{Total number of actual positives}}
+    $$
+
+-   **F1-Score:** The harmonic mean of precision and recall, calculated as
+
+    $$
+    F1-Score = \frac{2 *\mbox{precision} * \mbox{recall}}{\mbox{precision + recall}}
+    $$
+
+    It is also a useful metric for imbalanced datasets where both precision and recall are important.
+
+-   **FPR:** False Positive Rate is the probability that a false alarm will be raised since a positive outcome will be predicted when the true value is negative.
+
+    $$
+    FPR = \frac{\mbox{FP}} {\mbox{FP + TN}}
+    $$
+
+    It is also a useful metric for real life applications. The lower the FPR, the better.
+
+-   **ROC curve and AUC:** The Receiver Operating Characteristic (ROC) curve is a plot of the true positive rate (recall) against the false positive rate (1-specificity) for different threshold values of the classifier's decision function. The Area Under the Curve (AUC) measures the overall performance of the classifier, with values ranging from 0.5 (random guessing) to 1 (perfect classification).
+
+-   **Cross-validation:** A technique for dividing the available data into multiple folds and training the model on each fold while testing on the others, to obtain a more robust estimate of the model's performance.
+
+## Visualization
+
+To understand how anomaly detection works in the real life applications, we employ several supervised machine learning models (to be precise, classification models) and compare their performance a standard data set, the NSL-KDD data set. 
+
+### NSL-KDD Dataset
+
+We will be using [NSL-KDD Dataset](https://www.unb.ca/cic/datasets/nsl.html) for visualizing anomaly and outlier detection. The NSL-KDD dataset is a popular one for intrusion detection in network security. The dataset attempts to mimic real world network traffic data. There are 4 type of major attack traffics available in this dataset. For the sake of anomaly/ outlier detection, we will consider them together in the same (*'anomaly'*) class. Features in this dataset contain information regarding the network flow.
+
+Code snippet for loading this dataset (from text files):
+
+{{< embed _anomaly_outlier_detection.ipynb#load_dataset echo=true >}}
+
+We need to add column names manually since they are unavailable in those text files. Also we drop the *difficulty_score* column since it depicts the difficulty level for predicting the attack which is unnecessary in this context.
+
+### Encode Categorical Variables
+
+We have to encode categorical variables to numerical ones so that machine learning models may interpret them and learn from them. Code snippet for encoding the three categorical variables (*protocol_type, service, flag)*:
+
+{{< embed _anomaly_outlier_detection.ipynb#encode_categorical echo=true >}}
+
+Later, we match those encodings of train data with test data to maintain the consistency among newly created one hot encoding. Also we fix the sequence of columns which is a must.
+
+{{< embed _anomaly_outlier_detection.ipynb#categorical_match echo=true >}}
+
+### Correlation 
+
+We plot correlation among the features using Spearman method. This helps us to understand the importance of those features and their dependency among themselves.
+
+{{< embed _anomaly_outlier_detection.ipynb#correlation echo=true >}}
+
+We can observe that the feature *num_outbound_cmds* remains always constant (zero). So we drop this unnecessary column.
+
+### Labelling 
+
+We assign the label *0* for benign traffic data and *1* for anomalous ones.
+
+{{< embed _anomaly_outlier_detection.ipynb#labelling echo=true >}}
+
+### Data Split and Scaling
+
+We split the training and testing data to separate the feature ($X$) and target ($y$):
+
+{{< embed _anomaly_outlier_detection.ipynb#split echo=true >}}
+
+After that, we scale the feature values so that features with high values can not dominate the model:
+
+{{< embed _anomaly_outlier_detection.ipynb#scale echo=true >}}
+
+### Classifier Models
+
+We utilize the scikit-learn machine library to create several classifier models for observing their power in detecting the anomaly/ outliers. Those models incluse Gaussian Naïve Bayes Classifier, Bernoulli Naïve Bayes Classifier, Decision Tree Classifier, K-Nearest Neighbors Classifier, Random Forest Classifier, and Logistic Regression.
+
+Code snippet for this is:
+
+{{< embed _anomaly_outlier_detection.ipynb#models echo=true >}}
+
+We plot the confusion matrix for understanding the correctness of their prediction.
+
+### Performance Evaluation
+
+Later, we evaluate the performance of the models by reporting their train and test accuracy, \$R\^2\$ score, class wise precision, recall, F-1 score and False Positive Rate:
+
+{{< embed _anomaly_outlier_detection.ipynb#compare echo=true >}}
+
+Also we provide four plots to visually differentiate amon the performance of those models.
+
+As we can see, Decision Tree Classifier performs better than other models, almost in every category. But other models perform better while we consider the precision for anomaly class. Also, Naive Bayes works the best if we consider FPR.
+
+We can also utilize the [PyOD](https://github.com/yzhao062/pyod) (Python Outlier Detection) is a Python library that provides a collection of outlier detection algorithms.

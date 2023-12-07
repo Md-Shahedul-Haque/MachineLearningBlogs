@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/anomalyOutlierDetection/index.html",
       "/posts/classification/index.html",
       "/posts/regression/index.html",
       "/posts/clustering/index.html",

@@ -100,7 +100,7 @@ We utilize the scikit-learn machine library to create our SVM model with linear 
 
 ### Naive Bayes Classifier
 
-Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome
+Naive Bayes classifiers are a collection of classification algorithms based on Bayes' Theorem. Such classifiers has strict assumption that every pair of features is independent of each other. Also they require that each features provide an independent and equal contribution to the outcome.
 
 Code snippet for creating a gaussian naive bayes classifier model:
 
